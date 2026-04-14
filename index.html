@@ -11,24 +11,18 @@
     html { scroll-behavior: smooth; -webkit-text-size-adjust: none; }
     body {
       font-family: 'Nunito', sans-serif;
-      background:
-        linear-gradient(
-          to bottom,
-          #7b1fa2 0%,
-          #6a1799 4%,
-          #4a1275 10%,
-          #2d0d52 20%,
-          #1e0a38 32%,
-          #18111a 48%,
-          #18111a 100%
-        );
+      background-color: #18111a;
+      background-image:
+        linear-gradient(rgba(18, 8, 26, 0.82), rgba(18, 8, 26, 0.82)),
+        url('./assets/img/fundo.jpg');
+      background-repeat: repeat;
+      background-size: auto;
       background-attachment: scroll;
       color: #f0e6f6;
       min-height: 100dvh;
       line-height: 1.6;
     }
 
-    /* funde a borda inferior do banner com o fundo */
     .site-header { width: 100%; display: block; position: relative; }
     .site-header::after {
       content: '';
@@ -36,7 +30,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 80px;
-      background: linear-gradient(to bottom, transparent 0%, #7b1fa2 100%);
+      background: linear-gradient(to bottom, transparent 0%, rgba(18, 8, 26, 0.82) 100%);
       pointer-events: none;
     }
     .site-header img.banner-img {
@@ -45,8 +39,8 @@
     }
 
     .form-topo {
-      background: rgba(120, 30, 160, 0.45);
-      border-bottom: 2px solid rgba(160, 60, 200, 0.4);
+      background: rgba(30, 10, 44, 0.75);
+      border-bottom: 2px solid rgba(160, 60, 200, 0.35);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       padding: .65rem 1rem .75rem;
@@ -141,7 +135,7 @@
       letter-spacing: .01em; line-height: 1.4; margin-top: .15rem;
     }
     .intro-atencao {
-      background: rgba(42, 29, 8, 0.85); border-left: 4px solid #f59e0b; border-radius: .7rem;
+      background: rgba(42, 29, 8, 0.88); border-left: 4px solid #f59e0b; border-radius: .7rem;
       padding: 1rem 1.2rem; margin: 1.4rem 1rem 0;
       font-size: .97rem; color: #fde68a; line-height: 1.7; font-weight: 500;
     }
@@ -150,7 +144,7 @@
       max-width: 700px; margin: 1.4rem auto 3rem; padding: 0 1rem;
       display: flex; flex-direction: column; gap: .75rem;
     }
-    .step-card { background: rgba(34, 21, 41, 0.88); border-radius: 1rem; overflow: hidden; border: 1.5px solid #3a2045; }
+    .step-card { background: rgba(22, 10, 32, 0.82); border-radius: 1rem; overflow: hidden; border: 1.5px solid #3a2045; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
     .step-header {
       display: flex; align-items: center; gap: .85rem; width: 100%;
       background: none; border: none; padding: 1.1rem 1.2rem; cursor: pointer;
