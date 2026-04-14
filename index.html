@@ -21,8 +21,6 @@
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
-
-    /* ── FORM TOPO ── */
     .form-topo {
       background: #221529;
       border-bottom: 2px solid #3a2045;
@@ -48,8 +46,6 @@
     }
     .form-topo .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
     .form-topo .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
-
-    /* ── FORM ITEM 4 (tamanho original) ── */
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -84,8 +80,6 @@
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
-
-    /* ── FAIXA GRÁTIS menor ── */
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
@@ -98,7 +92,6 @@
       font-size: .92rem; font-weight: 900; padding: .1rem .55rem;
       border-radius: 2rem; margin-right: .35rem; letter-spacing: .03em;
     }
-
     .intro-atencao {
       background: #2a1d08; border-left: 4px solid #f59e0b; border-radius: .7rem;
       padding: 1rem 1.2rem; margin: 1.4rem 1rem 0;
@@ -366,53 +359,68 @@
   <script>
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
 
-    function setupForm(formId, btnId, feedbackId, hasWhatsapp) {
-      const form     = document.getElementById(formId);
-      const btn      = document.getElementById(btnId);
-      const feedback = document.getElementById(feedbackId);
+    // Formulário do TOPO — só ID e email (sem whatsapp)
+    (function() {
+      const form     = document.getElementById('id-form-topo');
+      const btn      = document.getElementById('btn-topo');
+      const feedback = document.getElementById('feedback-topo');
 
-      function showFeedback(type, msg) {
-        feedback.className = 'form-feedback show ' + type;
-        feedback.innerHTML = msg;
-      }
-      function hideFeedback() {
-        feedback.className = 'form-feedback';
-        feedback.innerHTML = '';
-      }
+      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
+      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
 
       form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        hideFeedback();
-        const id       = form['id'].value.trim();
-        const email    = form['email'].value.trim();
-        const whatsapp = hasWhatsapp ? form['whatsapp'].value.trim() : '';
-        if (!id || !email || (hasWhatsapp && !whatsapp)) {
-          showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
+        e.preventDefault(); hide();
+        const id    = form['id'].value.trim();
+        const email = form['email'].value.trim();
+        if (!id || !email) {
+          show('error', '⚠️ Por favor, preencha o ID e o e-mail antes de enviar.');
           return;
         }
-        btn.disabled = true;
-        btn.classList.add('loading');
+        btn.disabled = true; btn.classList.add('loading');
+        try {
+          const params = new URLSearchParams({ id, email, whatsapp: '' });
+          const res  = await fetch(SHEETS_URL + '?' + params.toString(), { method: 'GET', redirect: 'follow' });
+          const json = await res.json();
+          if (json.status === 'success') {
+            show('success', '✅ Dados enviados! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
+            form.reset();
+          } else { show('error', '❌ Erro: ' + (json.message || 'tente novamente.')); }
+        } catch { show('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.'); }
+        finally { btn.disabled = false; btn.classList.remove('loading'); }
+      });
+    })();
+
+    // Formulário do ITEM 4 — ID, email e whatsapp
+    (function() {
+      const form     = document.getElementById('id-form');
+      const btn      = document.getElementById('btn-enviar');
+      const feedback = document.getElementById('form-feedback');
+
+      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
+      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); hide();
+        const id       = form['id'].value.trim();
+        const email    = form['email'].value.trim();
+        const whatsapp = form['whatsapp'].value.trim();
+        if (!id || !email || !whatsapp) {
+          show('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
+          return;
+        }
+        btn.disabled = true; btn.classList.add('loading');
         try {
           const params = new URLSearchParams({ id, email, whatsapp });
-          const res    = await fetch(SHEETS_URL + '?' + params.toString(), { method: 'GET', redirect: 'follow' });
-          const json   = await res.json();
+          const res  = await fetch(SHEETS_URL + '?' + params.toString(), { method: 'GET', redirect: 'follow' });
+          const json = await res.json();
           if (json.status === 'success') {
-            showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
+            show('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
             form.reset();
-          } else {
-            showFeedback('error', '❌ Erro: ' + (json.message || 'tente novamente.'));
-          }
-        } catch (err) {
-          showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
-        } finally {
-          btn.disabled = false;
-          btn.classList.remove('loading');
-        }
+          } else { show('error', '❌ Erro: ' + (json.message || 'tente novamente.')); }
+        } catch { show('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.'); }
+        finally { btn.disabled = false; btn.classList.remove('loading'); }
       });
-    }
-
-    setupForm('id-form-topo', 'btn-topo',   'feedback-topo', false);
-    setupForm('id-form',      'btn-enviar', 'form-feedback', true);
+    })();
 
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
