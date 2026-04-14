@@ -21,31 +21,96 @@
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
+
+    /* FORM TOPO — 3 campos lado a lado + botão */
     .form-topo {
       background: #221529;
       border-bottom: 2px solid #3a2045;
-      padding: .8rem 1rem 1rem;
+      padding: .65rem 1rem .75rem;
     }
-    .form-topo-inner { max-width: 520px; margin: 0 auto; }
-    .form-topo .id-form { display: flex; flex-direction: column; gap: .5rem; }
-    .form-topo .id-form .field { display: flex; flex-direction: column; gap: .2rem; }
-    .form-topo .id-form label { font-size: .78rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
-    .form-topo .id-form input {
-      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .5rem;
-      padding: .5rem .8rem; font-size: .85rem; font-family: inherit; color: #f0e6f6;
-      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 38px;
+    .form-topo-inner { max-width: 700px; margin: 0 auto; }
+    .form-topo .topo-row {
+      display: flex;
+      gap: .4rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
     }
-    .form-topo .id-form input::placeholder { color: #6a4880; }
-    .form-topo .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
-    .form-topo .btn-enviar {
-      display: flex; align-items: center; justify-content: center; gap: .4rem;
-      background: #e91e8c; color: #fff; font-family: inherit; font-size: .82rem;
-      font-weight: 800; padding: .55rem 1rem; border-radius: 2rem; border: none;
-      cursor: pointer; width: 100%; min-height: 38px; margin-top: .1rem;
-      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
+    .form-topo .topo-field {
+      display: flex;
+      flex-direction: column;
+      gap: .18rem;
+      flex: 1;
+      min-width: 90px;
     }
-    .form-topo .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
-    .form-topo .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
+    .form-topo .topo-field label {
+      font-size: .68rem;
+      font-weight: 700;
+      color: #c8a8e0;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .form-topo .topo-field input {
+      background: #150d1c;
+      border: 1.5px solid #4a2560;
+      border-radius: .45rem;
+      padding: .38rem .55rem;
+      font-size: .78rem;
+      font-family: inherit;
+      color: #f0e6f6;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      width: 100%;
+      min-height: 34px;
+    }
+    .form-topo .topo-field input::placeholder { color: #6a4880; }
+    .form-topo .topo-field input:focus { border-color: #e91e8c; box-shadow: 0 0 0 2px rgba(233,30,140,0.18); }
+    .form-topo .btn-topo-enviar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .3rem;
+      background: #e91e8c;
+      color: #fff;
+      font-family: inherit;
+      font-size: .75rem;
+      font-weight: 800;
+      padding: 0 .85rem;
+      border-radius: 2rem;
+      border: none;
+      cursor: pointer;
+      min-height: 34px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background .18s, transform .12s, opacity .18s;
+      letter-spacing: .02em;
+      align-self: flex-end;
+    }
+    .form-topo .btn-topo-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
+    .form-topo .btn-topo-enviar:disabled { opacity: .6; cursor: not-allowed; }
+    .form-topo .btn-topo-enviar .spinner {
+      width: 13px; height: 13px; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin .7s linear infinite; display: none;
+    }
+    .form-topo .btn-topo-enviar.loading .spinner { display: block; }
+    .form-topo .btn-topo-enviar.loading .btn-text { display: none; }
+    .form-topo .feedback-topo {
+      border-radius: .5rem; padding: .5rem .8rem; font-size: .8rem;
+      font-weight: 700; line-height: 1.5; display: none; margin-top: .4rem; width: 100%;
+    }
+    .form-topo .feedback-topo.show { display: block; }
+    .form-topo .feedback-topo.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .form-topo .feedback-topo.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+
+    /* campos menores em telas pequenas: empilha em 2 colunas */
+    @media (max-width: 480px) {
+      .form-topo .topo-row { gap: .3rem; }
+      .form-topo .topo-field { min-width: calc(50% - .3rem); flex: 1 1 calc(50% - .3rem); }
+      .form-topo .topo-field:first-child { flex: 1 1 100%; }
+      .form-topo .btn-topo-enviar { width: 100%; min-height: 36px; font-size: .78rem; }
+    }
+
+    /* FORM ITEM 4 */
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -80,6 +145,7 @@
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
@@ -165,10 +231,6 @@
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
       .faixa-gratis p { font-size: .8rem; }
       .faixa-gratis span { font-size: .85rem; }
-      .form-topo { padding: .7rem .75rem .9rem; }
-      .form-topo .id-form label { font-size: .74rem; }
-      .form-topo .id-form input { font-size: .8rem; padding: .45rem .7rem; }
-      .form-topo .btn-enviar { font-size: .78rem; padding: .5rem .9rem; }
     }
   </style>
 </head>
@@ -185,20 +247,26 @@
 
   <section class="form-topo">
     <div class="form-topo-inner">
-      <form class="id-form" id="id-form-topo" novalidate>
-        <div class="field">
-          <label for="topo-id">🔢 Seu número de ID no app</label>
-          <input type="text" id="topo-id" name="topo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+      <form id="id-form-topo" novalidate>
+        <div class="topo-row">
+          <div class="topo-field">
+            <label for="topo-id">🔢 ID no app</label>
+            <input type="text" id="topo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+          </div>
+          <div class="topo-field">
+            <label for="topo-email">📧 E-mail</label>
+            <input type="email" id="topo-email" placeholder="seuemail@gmail.com" autocomplete="email" required />
+          </div>
+          <div class="topo-field">
+            <label for="topo-whatsapp">📱 WhatsApp</label>
+            <input type="tel" id="topo-whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
+          </div>
+          <button type="submit" class="btn-topo-enviar" id="btn-topo">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-text">✉️ Enviar</span>
+          </button>
         </div>
-        <div class="field">
-          <label for="topo-email">📧 Seu e-mail de contato</label>
-          <input type="email" id="topo-email" name="topo-email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
-        </div>
-        <div class="form-feedback" id="feedback-topo" role="alert"></div>
-        <button type="submit" class="btn-enviar" id="btn-topo">
-          <span class="spinner" aria-hidden="true"></span>
-          <span class="btn-text">✉️ Enviar meus dados</span>
-        </button>
+        <div class="feedback-topo" id="feedback-topo" role="alert"></div>
       </form>
     </div>
   </section>
@@ -359,28 +427,30 @@
   <script>
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
 
-    // Formulário do TOPO — só ID e email
+    // Formulário do TOPO — ID + email + whatsapp lado a lado
     (function() {
       const form     = document.getElementById('id-form-topo');
       const btn      = document.getElementById('btn-topo');
       const feedback = document.getElementById('feedback-topo');
-      const inputId    = document.getElementById('topo-id');
-      const inputEmail = document.getElementById('topo-email');
+      const inputId       = document.getElementById('topo-id');
+      const inputEmail    = document.getElementById('topo-email');
+      const inputWhatsapp = document.getElementById('topo-whatsapp');
 
-      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
-      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
+      function show(type, msg) { feedback.className = 'feedback-topo show ' + type; feedback.innerHTML = msg; }
+      function hide() { feedback.className = 'feedback-topo'; feedback.innerHTML = ''; }
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); hide();
-        const id    = inputId.value.trim();
-        const email = inputEmail.value.trim();
-        if (!id || !email) {
-          show('error', '⚠️ Por favor, preencha o ID e o e-mail antes de enviar.');
+        const id       = inputId.value.trim();
+        const email    = inputEmail.value.trim();
+        const whatsapp = inputWhatsapp.value.trim();
+        if (!id || !email || !whatsapp) {
+          show('error', '⚠️ Preencha o ID, e-mail e WhatsApp antes de enviar.');
           return;
         }
         btn.disabled = true; btn.classList.add('loading');
         try {
-          const params = new URLSearchParams({ id, email, whatsapp: '' });
+          const params = new URLSearchParams({ id, email, whatsapp });
           const res  = await fetch(SHEETS_URL + '?' + params.toString(), { method: 'GET', redirect: 'follow' });
           const json = await res.json();
           if (json.status === 'success') {
