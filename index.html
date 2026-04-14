@@ -197,6 +197,90 @@
       transition: background .18s, transform .12s;
     }
     .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
+
+    /* ── Formulário Passo 4 ── */
+    .id-form {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin-top: 1rem;
+    }
+    .id-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .id-form label {
+      font-size: .88rem;
+      font-weight: 700;
+      color: #e0c8f0;
+      letter-spacing: .02em;
+    }
+    .id-form input {
+      background: #150d1c;
+      border: 1.5px solid #4a2560;
+      border-radius: .6rem;
+      padding: .75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #f0e6f6;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      width: 100%;
+      min-height: 44px;
+    }
+    .id-form input::placeholder { color: #6a4880; }
+    .id-form input:focus {
+      border-color: #e91e8c;
+      box-shadow: 0 0 0 3px rgba(233,30,140,0.18);
+    }
+    .btn-enviar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: #e91e8c;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      padding: .85rem 1.2rem;
+      border-radius: 2rem;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      min-height: 48px;
+      margin-top: .3rem;
+      transition: background .18s, transform .12s, opacity .18s;
+      letter-spacing: .02em;
+    }
+    .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
+    .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-enviar .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    .btn-enviar.loading .spinner { display: block; }
+    .btn-enviar.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-feedback {
+      border-radius: .6rem;
+      padding: .8rem 1rem;
+      font-size: .93rem;
+      font-weight: 700;
+      line-height: 1.5;
+      display: none;
+      margin-top: .3rem;
+    }
+    .form-feedback.show { display: block; }
+    .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+
     .site-footer {
       text-align: center;
       padding: 1.5rem 1rem 2.5rem;
@@ -206,6 +290,7 @@
     }
     .site-footer strong { color: #c084fc; }
     .footer-small { margin-top: .3rem; color: #5a4068; }
+
     @media (max-width: 480px) {
       .site-header img.banner-img { max-height: 260px; object-position: center center; }
       .steps-container { padding: 0 .75rem; }
@@ -346,13 +431,57 @@
       </button>
       <div class="step-content" id="content-4">
         <div class="step-body">
-          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e enviar para a Carla. É esse número que vai ativar sua conta para receber as chamadas e ganhar dinheiro.</p>
+          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo. É esse número que vai ativar sua conta para receber as chamadas e ganhar dinheiro.</p>
           <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Tela de perfil mostrando o número de ID abaixo do avatar" class="img-single" loading="lazy" />
-          <p class="img-caption" style="text-align:center; margin-bottom:.8rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
-          <p>Após encontrar o número, envie para a Carla:</p>
-          <div class="cta-links">
-            <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
-          </div>
+          <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
+
+          <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
+
+          <form class="id-form" id="id-form" novalidate>
+            <div class="field">
+              <label for="campo-id">🔢 Seu número de ID no app</label>
+              <input
+                type="text"
+                id="campo-id"
+                name="id"
+                placeholder="Ex: 123456789"
+                inputmode="numeric"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="campo-email">📧 Seu e-mail de contato</label>
+              <input
+                type="email"
+                id="campo-email"
+                name="email"
+                placeholder="Ex: seuemail@gmail.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
+              <input
+                type="tel"
+                id="campo-whatsapp"
+                name="whatsapp"
+                placeholder="Ex: 32991234567"
+                inputmode="numeric"
+                autocomplete="tel"
+                required
+              />
+            </div>
+
+            <div class="form-feedback" id="form-feedback" role="alert"></div>
+
+            <button type="submit" class="btn-enviar" id="btn-enviar">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn-text">✉️ Enviar meus dados</span>
+            </button>
+          </form>
+
           <div class="alert alert-warning" style="margin-top:1rem;">
             ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada e você não recebe chamadas.
           </div>
@@ -376,7 +505,7 @@
             ☑️ Instalou corretamente (Android ou iPhone)<br>
             ☑️ Criou sua conta no app<br>
             ☑️ Colocou sua foto no perfil<br>
-            ☑️ Encontrou e enviou o número de ID para a Carla<br>
+            ☑️ Preencheu o formulário com ID, e-mail e WhatsApp<br>
             ☑️ Aguardou a confirmação da Carla
           </div>
           <div class="alert alert-pink">
@@ -398,6 +527,7 @@
   </footer>
 
   <script>
+    // Accordion
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -405,6 +535,64 @@
         btn.setAttribute('aria-expanded', String(!expanded));
         content.classList.toggle('open', !expanded);
       });
+    });
+
+    // Formulário Passo 4
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
+
+    const form     = document.getElementById('id-form');
+    const btn      = document.getElementById('btn-enviar');
+    const feedback = document.getElementById('form-feedback');
+
+    function showFeedback(type, msg) {
+      feedback.className = 'form-feedback show ' + type;
+      feedback.innerHTML = msg;
+    }
+
+    function hideFeedback() {
+      feedback.className = 'form-feedback';
+      feedback.innerHTML = '';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideFeedback();
+
+      const id        = form['id'].value.trim();
+      const email     = form['email'].value.trim();
+      const whatsapp  = form['whatsapp'].value.trim();
+
+      if (!id || !email || !whatsapp) {
+        showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.classList.add('loading');
+
+      try {
+        const res = await fetch(SHEETS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, email, whatsapp })
+        });
+
+        let data = {};
+        try { data = await res.json(); } catch (_) {}
+
+        if (res.ok && data.status !== 'error') {
+          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
+          form.reset();
+        } else {
+          const msg = data.message || 'Tente novamente em alguns instantes.';
+          showFeedback('error', '❌ Erro ao enviar: ' + msg);
+        }
+      } catch (err) {
+        showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('loading');
+      }
     });
   </script>
 </body>
