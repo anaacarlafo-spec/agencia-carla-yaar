@@ -538,6 +538,7 @@
     });
 
     // Formulário Passo 4
+    // Usa no-cors + URLSearchParams para contornar CORS do Google Apps Script
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
 
     const form     = document.getElementById('id-form');
@@ -558,9 +559,9 @@
       e.preventDefault();
       hideFeedback();
 
-      const id        = form['id'].value.trim();
-      const email     = form['email'].value.trim();
-      const whatsapp  = form['whatsapp'].value.trim();
+      const id       = form['id'].value.trim();
+      const email    = form['email'].value.trim();
+      const whatsapp = form['whatsapp'].value.trim();
 
       if (!id || !email || !whatsapp) {
         showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
@@ -571,24 +572,19 @@
       btn.classList.add('loading');
 
       try {
-        const res = await fetch(SHEETS_URL, {
+        // Google Apps Script exige no-cors + form-encoded para aceitar requisições externas
+        await fetch(SHEETS_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, email, whatsapp })
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ id, email, whatsapp }).toString()
         });
 
-        let data = {};
-        try { data = await res.json(); } catch (_) {}
-
-        if (res.ok && data.status !== 'error') {
-          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
-          form.reset();
-        } else {
-          const msg = data.message || 'Tente novamente em alguns instantes.';
-          showFeedback('error', '❌ Erro ao enviar: ' + msg);
-        }
+        // Com no-cors a resposta é opaca — assumimos sucesso se não houve erro de rede
+        showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
+        form.reset();
       } catch (err) {
-        showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
+        showFeedback('error', '❌ Erro ao enviar. Verifique sua internet e tente novamente.');
       } finally {
         btn.disabled = false;
         btn.classList.remove('loading');
