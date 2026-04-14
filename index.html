@@ -294,18 +294,9 @@
       </button>
       <div class="step-content" id="content-5">
         <div class="step-body">
-          <p>Depois que você enviar o número de ID, a <strong>Carla vai ativar seu perfil no sistema</strong>. A partir daí você começa a receber chamadas e ganhar dinheiro! 🎉</p>
-          <div class="alert alert-success">
-            ✅ <strong>Checklist final:</strong><br><br>
-            ☑️ Baixou o app pelo site oficial<br>
-            ☑️ Instalou corretamente (Android ou iPhone)<br>
-            ☑️ Criou sua conta no app<br>
-            ☑️ Colocou sua foto no perfil<br>
-            ☑️ Preencheu o formulário com ID, e-mail e WhatsApp<br>
-            ☑️ Aguardou a confirmação da Carla
-          </div>
-          <div class="alert alert-pink">🌸 Tudo certo? Então você está pronta para começar! Bem-vinda à agência! 💕</div>
-          <p style="margin-top:.8rem;">Dúvidas? Fale com a Carla:</p>
+          <p>Depois que você enviar o número de ID, a <strong>Carla vai ativar seu perfil no sistema</strong> e te mandar o <strong>Material de Ajuda no e-mail</strong> que você preencheu. 💕</p>
+          <div class="alert alert-success">✅ Fique de olho na sua caixa de entrada! O material chegará no e-mail cadastrado.</div>
+          <p style="margin-top:.8rem;">Dúvidas? Fale com a Carla pelo WhatsApp:</p>
           <div class="cta-links">
             <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
           </div>
@@ -369,7 +360,7 @@
         const json = await res.json();
 
         if (json.status === 'success') {
-          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
+          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
           form.reset();
         } else {
           showFeedback('error', '❌ Erro: ' + (json.message || 'tente novamente.'));
