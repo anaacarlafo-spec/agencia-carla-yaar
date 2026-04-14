@@ -93,8 +93,6 @@
       transition: background .18s, transform .12s;
     }
     .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
-
-    /* Formulário */
     .id-form { display: flex; flex-direction: column; gap: .85rem; margin-top: 1rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .35rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -129,14 +127,12 @@
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
-
     .site-footer {
       text-align: center; padding: 1.5rem 1rem 2.5rem;
       font-size: .85rem; color: #7a5c8a; border-top: 1px solid #2a1a2e;
     }
     .site-footer strong { color: #c084fc; }
     .footer-small { margin-top: .3rem; color: #5a4068; }
-
     @media (max-width: 480px) {
       .site-header img.banner-img { max-height: 260px; object-position: center center; }
       .steps-container { padding: 0 .75rem; }
@@ -238,7 +234,8 @@
               <p class="img-caption">📸 <strong>Com foto:</strong> assim fica corretamente</p>
             </div>
             <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Perfil com bonequinha" loading="lazy" />
+              <!-- PASSO 3 — mantém perfil-id.jpg -->
+              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/perfil-id.jpg" alt="Perfil com bonequinha" loading="lazy" />
               <p class="img-caption">🙋 <strong>Com bonequinha:</strong> é normal!</p>
             </div>
           </div>
@@ -257,7 +254,8 @@
       <div class="step-content" id="content-4">
         <div class="step-body">
           <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo.</p>
-          <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
+          <!-- PASSO 4 — usa idcortado.jpg (imagem nova separada do passo 3) -->
+          <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/idcortado.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
           <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
           <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
 
@@ -325,7 +323,6 @@
   </footer>
 
   <script>
-    // Accordion
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -335,10 +332,7 @@
       });
     });
 
-    // ── Formulário ──
-    // Usa GET com parâmetros na URL — sem CORS, sem proxy, funciona sempre
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
-
     const form     = document.getElementById('id-form');
     const btn      = document.getElementById('btn-enviar');
     const feedback = document.getElementById('form-feedback');
@@ -369,13 +363,11 @@
       btn.classList.add('loading');
 
       try {
-        // GET com parâmetros na URL — Google Apps Script doGet nunca bloqueia CORS
         const params = new URLSearchParams({ id, email, whatsapp });
         const res    = await fetch(SHEETS_URL + '?' + params.toString(), {
           method: 'GET',
           redirect: 'follow'
         });
-
         const json = await res.json();
 
         if (json.status === 'success') {
