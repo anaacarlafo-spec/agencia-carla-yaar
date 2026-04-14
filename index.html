@@ -21,12 +21,35 @@
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
+
+    /* ── FORM TOPO ── */
     .form-topo {
       background: #221529;
       border-bottom: 2px solid #3a2045;
-      padding: 1.2rem 1rem 1.4rem;
+      padding: .8rem 1rem 1rem;
     }
     .form-topo-inner { max-width: 520px; margin: 0 auto; }
+    .form-topo .id-form { display: flex; flex-direction: column; gap: .5rem; }
+    .form-topo .id-form .field { display: flex; flex-direction: column; gap: .2rem; }
+    .form-topo .id-form label { font-size: .78rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
+    .form-topo .id-form input {
+      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .5rem;
+      padding: .5rem .8rem; font-size: .85rem; font-family: inherit; color: #f0e6f6;
+      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 38px;
+    }
+    .form-topo .id-form input::placeholder { color: #6a4880; }
+    .form-topo .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
+    .form-topo .btn-enviar {
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+      background: #e91e8c; color: #fff; font-family: inherit; font-size: .82rem;
+      font-weight: 800; padding: .55rem 1rem; border-radius: 2rem; border: none;
+      cursor: pointer; width: 100%; min-height: 38px; margin-top: .1rem;
+      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
+    }
+    .form-topo .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
+    .form-topo .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
+
+    /* ── FORM ITEM 4 (tamanho original) ── */
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -47,7 +70,7 @@
     .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
     .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
     .btn-enviar .spinner {
-      width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.4);
+      width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,0.4);
       border-top-color: #fff; border-radius: 50%;
       animation: spin .7s linear infinite; display: none;
     }
@@ -55,24 +78,27 @@
     .btn-enviar.loading .btn-text { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .form-feedback {
-      border-radius: .6rem; padding: .8rem 1rem; font-size: .93rem;
+      border-radius: .6rem; padding: .7rem 1rem; font-size: .88rem;
       font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem;
     }
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+
+    /* ── FAIXA GRÁTIS menor ── */
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
-      padding: .85rem 1rem;
+      padding: .55rem 1rem;
       text-align: center;
     }
-    .faixa-gratis p { font-size: 1.1rem; font-weight: 900; color: #4ade80; letter-spacing: .03em; line-height: 1.4; }
+    .faixa-gratis p { font-size: .88rem; font-weight: 800; color: #4ade80; letter-spacing: .02em; line-height: 1.4; }
     .faixa-gratis span {
       display: inline-block; background: #22c55e; color: #052e16;
-      font-size: 1.25rem; font-weight: 900; padding: .15rem .7rem;
-      border-radius: 2rem; margin-right: .4rem; letter-spacing: .04em;
+      font-size: .92rem; font-weight: 900; padding: .1rem .55rem;
+      border-radius: 2rem; margin-right: .35rem; letter-spacing: .03em;
     }
+
     .intro-atencao {
       background: #2a1d08; border-left: 4px solid #f59e0b; border-radius: .7rem;
       padding: 1rem 1.2rem; margin: 1.4rem 1rem 0;
@@ -144,9 +170,12 @@
       .steps-container { padding: 0 .75rem; }
       .step-header { padding: .95rem 1rem; font-size: .95rem; }
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
-      .faixa-gratis p { font-size: 1rem; }
-      .faixa-gratis span { font-size: 1.1rem; }
-      .form-topo { padding: 1rem .75rem 1.2rem; }
+      .faixa-gratis p { font-size: .8rem; }
+      .faixa-gratis span { font-size: .85rem; }
+      .form-topo { padding: .7rem .75rem .9rem; }
+      .form-topo .id-form label { font-size: .74rem; }
+      .form-topo .id-form input { font-size: .8rem; padding: .45rem .7rem; }
+      .form-topo .btn-enviar { font-size: .78rem; padding: .5rem .9rem; }
     }
   </style>
 </head>
