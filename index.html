@@ -21,6 +21,67 @@
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
+
+    /* ===== FORMULÁRIO TOPO ===== */
+    .form-topo {
+      background: #221529;
+      border-bottom: 2px solid #3a2045;
+      padding: 1.4rem 1rem 1.6rem;
+    }
+    .form-topo-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .form-topo-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #f0e6f6;
+      text-align: center;
+      margin-bottom: .25rem;
+    }
+    .form-topo-sub {
+      font-size: .88rem;
+      color: #c4a8d8;
+      text-align: center;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .id-form { display: flex; flex-direction: column; gap: .75rem; }
+    .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
+    .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
+    .id-form input {
+      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .6rem;
+      padding: .75rem 1rem; font-size: 1rem; font-family: inherit; color: #f0e6f6;
+      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 44px;
+    }
+    .id-form input::placeholder { color: #6a4880; }
+    .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
+    .btn-enviar {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      background: #e91e8c; color: #fff; font-family: inherit; font-size: 1rem;
+      font-weight: 800; padding: .85rem 1.2rem; border-radius: 2rem; border: none;
+      cursor: pointer; width: 100%; min-height: 48px; margin-top: .2rem;
+      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
+    }
+    .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
+    .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-enviar .spinner {
+      width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin .7s linear infinite; display: none;
+    }
+    .btn-enviar.loading .spinner { display: block; }
+    .btn-enviar.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .form-feedback {
+      border-radius: .6rem; padding: .8rem 1rem; font-size: .93rem;
+      font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem;
+    }
+    .form-feedback.show { display: block; }
+    .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+    /* ===== FIM FORMULÁRIO TOPO ===== */
+
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
@@ -93,40 +154,6 @@
       transition: background .18s, transform .12s;
     }
     .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
-    .id-form { display: flex; flex-direction: column; gap: .85rem; margin-top: 1rem; }
-    .id-form .field { display: flex; flex-direction: column; gap: .35rem; }
-    .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
-    .id-form input {
-      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .6rem;
-      padding: .75rem 1rem; font-size: 1rem; font-family: inherit; color: #f0e6f6;
-      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 44px;
-    }
-    .id-form input::placeholder { color: #6a4880; }
-    .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
-    .btn-enviar {
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      background: #e91e8c; color: #fff; font-family: inherit; font-size: 1rem;
-      font-weight: 800; padding: .85rem 1.2rem; border-radius: 2rem; border: none;
-      cursor: pointer; width: 100%; min-height: 48px; margin-top: .3rem;
-      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
-    }
-    .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
-    .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
-    .btn-enviar .spinner {
-      width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.4);
-      border-top-color: #fff; border-radius: 50%;
-      animation: spin .7s linear infinite; display: none;
-    }
-    .btn-enviar.loading .spinner { display: block; }
-    .btn-enviar.loading .btn-text { display: none; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .form-feedback {
-      border-radius: .6rem; padding: .8rem 1rem; font-size: .93rem;
-      font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem;
-    }
-    .form-feedback.show { display: block; }
-    .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
-    .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
     .site-footer {
       text-align: center; padding: 1.5rem 1rem 2.5rem;
       font-size: .85rem; color: #7a5c8a; border-top: 1px solid #2a1a2e;
@@ -140,6 +167,7 @@
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
       .faixa-gratis p { font-size: 1rem; }
       .faixa-gratis span { font-size: 1.1rem; }
+      .form-topo { padding: 1.2rem .75rem 1.4rem; }
     }
   </style>
 </head>
@@ -153,6 +181,34 @@
       width="1310" height="655"
     />
   </header>
+
+  <!-- FORMULÁRIO TOPO -->
+  <section class="form-topo">
+    <div class="form-topo-inner">
+      <p class="form-topo-title">📝 Cadastre seu ID e receba o material</p>
+      <p class="form-topo-sub">Preencha os campos abaixo para a Carla ativar seu perfil e enviar o material no seu e-mail.</p>
+      <form class="id-form" id="id-form-topo" novalidate>
+        <div class="field">
+          <label for="topo-id">🔢 Seu número de ID no app</label>
+          <input type="text" id="topo-id" name="id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+        </div>
+        <div class="field">
+          <label for="topo-email">📧 Seu e-mail de contato</label>
+          <input type="email" id="topo-email" name="email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="topo-whatsapp">📱 Seu WhatsApp com DDD</label>
+          <input type="tel" id="topo-whatsapp" name="whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
+        </div>
+        <div class="form-feedback" id="feedback-topo" role="alert"></div>
+        <button type="submit" class="btn-enviar" id="btn-topo">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="btn-text">✉️ Enviar meus dados</span>
+        </button>
+      </form>
+    </div>
+  </section>
+  <!-- FIM FORMULÁRIO TOPO -->
 
   <div class="faixa-gratis">
     <p><span>✅ 100% GRÁTIS</span> Cadastro, download e uso são totalmente gratuitos!</p>
@@ -256,7 +312,6 @@
           <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/idcortado.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
           <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
           <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
-
           <form class="id-form" id="id-form" novalidate>
             <div class="field">
               <label for="campo-id">🔢 Seu número de ID no app</label>
@@ -270,15 +325,12 @@
               <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
               <input type="tel" id="campo-whatsapp" name="whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
             </div>
-
             <div class="form-feedback" id="form-feedback" role="alert"></div>
-
             <button type="submit" class="btn-enviar" id="btn-enviar">
               <span class="spinner" aria-hidden="true"></span>
               <span class="btn-text">✉️ Enviar meus dados</span>
             </button>
           </form>
-
           <div class="alert alert-warning" style="margin-top:1rem;">
             ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada.
           </div>
@@ -312,6 +364,56 @@
   </footer>
 
   <script>
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
+
+    function setupForm(formId, btnId, feedbackId) {
+      const form     = document.getElementById(formId);
+      const btn      = document.getElementById(btnId);
+      const feedback = document.getElementById(feedbackId);
+
+      function showFeedback(type, msg) {
+        feedback.className = 'form-feedback show ' + type;
+        feedback.innerHTML = msg;
+      }
+      function hideFeedback() {
+        feedback.className = 'form-feedback';
+        feedback.innerHTML = '';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideFeedback();
+        const id       = form['id'].value.trim();
+        const email    = form['email'].value.trim();
+        const whatsapp = form['whatsapp'].value.trim();
+        if (!id || !email || !whatsapp) {
+          showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
+          return;
+        }
+        btn.disabled = true;
+        btn.classList.add('loading');
+        try {
+          const params = new URLSearchParams({ id, email, whatsapp });
+          const res    = await fetch(SHEETS_URL + '?' + params.toString(), { method: 'GET', redirect: 'follow' });
+          const json   = await res.json();
+          if (json.status === 'success') {
+            showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
+            form.reset();
+          } else {
+            showFeedback('error', '❌ Erro: ' + (json.message || 'tente novamente.'));
+          }
+        } catch (err) {
+          showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
+        } finally {
+          btn.disabled = false;
+          btn.classList.remove('loading');
+        }
+      });
+    }
+
+    setupForm('id-form-topo', 'btn-topo',    'feedback-topo');
+    setupForm('id-form',      'btn-enviar',  'form-feedback');
+
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -319,58 +421,6 @@
         btn.setAttribute('aria-expanded', String(!expanded));
         content.classList.toggle('open', !expanded);
       });
-    });
-
-    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
-    const form     = document.getElementById('id-form');
-    const btn      = document.getElementById('btn-enviar');
-    const feedback = document.getElementById('form-feedback');
-
-    function showFeedback(type, msg) {
-      feedback.className = 'form-feedback show ' + type;
-      feedback.innerHTML = msg;
-    }
-    function hideFeedback() {
-      feedback.className = 'form-feedback';
-      feedback.innerHTML = '';
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      hideFeedback();
-
-      const id       = form['id'].value.trim();
-      const email    = form['email'].value.trim();
-      const whatsapp = form['whatsapp'].value.trim();
-
-      if (!id || !email || !whatsapp) {
-        showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
-        return;
-      }
-
-      btn.disabled = true;
-      btn.classList.add('loading');
-
-      try {
-        const params = new URLSearchParams({ id, email, whatsapp });
-        const res    = await fetch(SHEETS_URL + '?' + params.toString(), {
-          method: 'GET',
-          redirect: 'follow'
-        });
-        const json = await res.json();
-
-        if (json.status === 'success') {
-          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕');
-          form.reset();
-        } else {
-          showFeedback('error', '❌ Erro: ' + (json.message || 'tente novamente.'));
-        }
-      } catch (err) {
-        showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove('loading');
-      }
     });
   </script>
 </body>
