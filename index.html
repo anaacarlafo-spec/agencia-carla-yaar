@@ -537,9 +537,11 @@
       });
     });
 
-    // Formulário Passo 4
-    // Usa no-cors + URLSearchParams para contornar CORS do Google Apps Script
+    // ── Formulário Passo 4 ──
+    // Usa corsproxy.io para contornar CORS e envia JSON
+    // O Apps Script espera JSON.parse(e.postData.contents)
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
+    const PROXY_URL  = 'https://corsproxy.io/?' + encodeURIComponent(SHEETS_URL);
 
     const form     = document.getElementById('id-form');
     const btn      = document.getElementById('btn-enviar');
@@ -549,7 +551,6 @@
       feedback.className = 'form-feedback show ' + type;
       feedback.innerHTML = msg;
     }
-
     function hideFeedback() {
       feedback.className = 'form-feedback';
       feedback.innerHTML = '';
@@ -572,19 +573,22 @@
       btn.classList.add('loading');
 
       try {
-        // Google Apps Script exige no-cors + form-encoded para aceitar requisições externas
-        await fetch(SHEETS_URL, {
+        const res = await fetch(PROXY_URL, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ id, email, whatsapp }).toString()
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, email, whatsapp })
         });
 
-        // Com no-cors a resposta é opaca — assumimos sucesso se não houve erro de rede
-        showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
-        form.reset();
+        const json = await res.json();
+
+        if (json.status === 'success') {
+          showFeedback('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
+          form.reset();
+        } else {
+          showFeedback('error', '❌ Erro: ' + (json.message || 'tente novamente.'));
+        }
       } catch (err) {
-        showFeedback('error', '❌ Erro ao enviar. Verifique sua internet e tente novamente.');
+        showFeedback('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
       } finally {
         btn.disabled = false;
         btn.classList.remove('loading');
