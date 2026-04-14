@@ -14,29 +14,18 @@
       background-color: #18111a;
       background-image:
         linear-gradient(rgba(18, 8, 26, 0.45), rgba(18, 8, 26, 0.45)),
-        url('https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/fundo.jpg');
-      background-repeat: repeat;
-      background-size: auto;
-      background-attachment: scroll;
+        url('https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/fundo-e-banner.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
       color: #f0e6f6;
       min-height: 100dvh;
       line-height: 1.6;
     }
 
-    .site-header { width: 100%; display: block; position: relative; }
-    .site-header::after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 80px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(18, 8, 26, 0.5) 100%);
-      pointer-events: none;
-    }
-    .site-header img.banner-img {
-      width: 100%; height: auto; display: block;
-      max-height: 420px; object-fit: cover; object-position: center top;
-    }
+    /* SEM banner de topo separado — a imagem de fundo já faz esse papel */
+    .site-header { display: none; }
 
     .form-topo {
       background: transparent;
@@ -203,8 +192,6 @@
     .site-footer strong { color: #e0a0ff; }
     .footer-small { margin-top: .3rem; color: #8a6898; }
     @media (max-width: 480px) {
-      .site-header img.banner-img { max-height: 260px; object-position: center center; }
-      .site-header::after { height: 50px; }
       .steps-container { padding: 0 .75rem; }
       .step-header { padding: .95rem 1rem; font-size: .95rem; }
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
@@ -213,12 +200,8 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <img class="banner-img"
-      src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/banner-topo.jpg"
-      alt="Carla.agenciayaar – Ganhe Dinheiro Atendendo Chamadas de Vídeo"
-      width="1310" height="655" />
-  </header>
+  <!-- Banner removido: a imagem fundo-e-banner.jpg cobre topo e fundo inteiros -->
+  <header class="site-header"></header>
 
   <section class="form-topo">
     <div class="form-topo-inner">
