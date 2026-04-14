@@ -11,19 +11,44 @@
     html { scroll-behavior: smooth; -webkit-text-size-adjust: none; }
     body {
       font-family: 'Nunito', sans-serif;
-      background: #18111a;
+      background:
+        linear-gradient(
+          to bottom,
+          #7b1fa2 0%,
+          #6a1799 4%,
+          #4a1275 10%,
+          #2d0d52 20%,
+          #1e0a38 32%,
+          #18111a 48%,
+          #18111a 100%
+        );
+      background-attachment: scroll;
       color: #f0e6f6;
       min-height: 100dvh;
       line-height: 1.6;
     }
+
+    /* funde a borda inferior do banner com o fundo */
     .site-header { width: 100%; display: block; position: relative; }
+    .site-header::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent 0%, #7b1fa2 100%);
+      pointer-events: none;
+    }
     .site-header img.banner-img {
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
+
     .form-topo {
-      background: #221529;
-      border-bottom: 2px solid #3a2045;
+      background: rgba(120, 30, 160, 0.45);
+      border-bottom: 2px solid rgba(160, 60, 200, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       padding: .65rem 1rem .75rem;
     }
     .form-topo-inner { max-width: 700px; margin: 0 auto; }
@@ -34,15 +59,15 @@
       display: flex; flex-direction: column; gap: .18rem; flex: 1; min-width: 90px;
     }
     .form-topo .topo-field label {
-      font-size: .68rem; font-weight: 700; color: #c8a8e0; letter-spacing: .02em; white-space: nowrap;
+      font-size: .68rem; font-weight: 700; color: #e8c8f8; letter-spacing: .02em; white-space: nowrap;
     }
     .form-topo .topo-field input {
-      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .45rem;
+      background: rgba(80, 10, 110, 0.6); border: 1.5px solid rgba(180, 80, 220, 0.5); border-radius: .45rem;
       padding: .38rem .55rem; font-size: .78rem; font-family: inherit; color: #f0e6f6;
       outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 34px;
     }
-    .form-topo .topo-field input::placeholder { color: #6a4880; }
-    .form-topo .topo-field input:focus { border-color: #e91e8c; box-shadow: 0 0 0 2px rgba(233,30,140,0.18); }
+    .form-topo .topo-field input::placeholder { color: #a070c0; }
+    .form-topo .topo-field input:focus { border-color: #e91e8c; box-shadow: 0 0 0 2px rgba(233,30,140,0.25); }
     .form-topo .btn-topo-enviar {
       display: flex; align-items: center; justify-content: center; gap: .3rem;
       background: #e91e8c; color: #fff; font-family: inherit; font-size: .75rem; font-weight: 800;
@@ -105,7 +130,7 @@
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
     .faixa-gratis {
-      background: #14532d; padding: .65rem 1rem; text-align: center;
+      background: rgba(20, 83, 45, 0.92); padding: .65rem 1rem; text-align: center;
     }
     .faixa-gratis .linha1 {
       display: block; font-size: 1rem; font-weight: 900; color: #4ade80;
@@ -116,7 +141,7 @@
       letter-spacing: .01em; line-height: 1.4; margin-top: .15rem;
     }
     .intro-atencao {
-      background: #2a1d08; border-left: 4px solid #f59e0b; border-radius: .7rem;
+      background: rgba(42, 29, 8, 0.85); border-left: 4px solid #f59e0b; border-radius: .7rem;
       padding: 1rem 1.2rem; margin: 1.4rem 1rem 0;
       font-size: .97rem; color: #fde68a; line-height: 1.7; font-weight: 500;
     }
@@ -125,7 +150,7 @@
       max-width: 700px; margin: 1.4rem auto 3rem; padding: 0 1rem;
       display: flex; flex-direction: column; gap: .75rem;
     }
-    .step-card { background: #221529; border-radius: 1rem; overflow: hidden; border: 1.5px solid #3a2045; }
+    .step-card { background: rgba(34, 21, 41, 0.88); border-radius: 1rem; overflow: hidden; border: 1.5px solid #3a2045; }
     .step-header {
       display: flex; align-items: center; gap: .85rem; width: 100%;
       background: none; border: none; padding: 1.1rem 1.2rem; cursor: pointer;
@@ -183,6 +208,7 @@
     .footer-small { margin-top: .3rem; color: #5a4068; }
     @media (max-width: 480px) {
       .site-header img.banner-img { max-height: 260px; object-position: center center; }
+      .site-header::after { height: 50px; }
       .steps-container { padding: 0 .75rem; }
       .step-header { padding: .95rem 1rem; font-size: .95rem; }
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
