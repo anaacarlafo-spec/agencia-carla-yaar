@@ -188,11 +188,11 @@
       <form class="id-form" id="id-form-topo" novalidate>
         <div class="field">
           <label for="topo-id">🔢 Seu número de ID no app</label>
-          <input type="text" id="topo-id" name="id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+          <input type="text" id="topo-id" name="topo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
         </div>
         <div class="field">
           <label for="topo-email">📧 Seu e-mail de contato</label>
-          <input type="email" id="topo-email" name="email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
+          <input type="email" id="topo-email" name="topo-email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
         </div>
         <div class="form-feedback" id="feedback-topo" role="alert"></div>
         <button type="submit" class="btn-enviar" id="btn-topo">
@@ -305,18 +305,18 @@
           <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/idcortado.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
           <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
           <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
-          <form class="id-form" id="id-form" novalidate>
+          <form class="id-form" id="id-form-step4" novalidate>
             <div class="field">
               <label for="campo-id">🔢 Seu número de ID no app</label>
-              <input type="text" id="campo-id" name="id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+              <input type="text" id="campo-id" name="campo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
             </div>
             <div class="field">
               <label for="campo-email">📧 Seu e-mail de contato</label>
-              <input type="email" id="campo-email" name="email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
+              <input type="email" id="campo-email" name="campo-email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
-              <input type="tel" id="campo-whatsapp" name="whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
+              <input type="tel" id="campo-whatsapp" name="campo-whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
             </div>
             <div class="form-feedback" id="form-feedback" role="alert"></div>
             <button type="submit" class="btn-enviar" id="btn-enviar">
@@ -359,19 +359,21 @@
   <script>
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
 
-    // Formulário do TOPO — só ID e email (sem whatsapp)
+    // Formulário do TOPO — só ID e email
     (function() {
       const form     = document.getElementById('id-form-topo');
       const btn      = document.getElementById('btn-topo');
       const feedback = document.getElementById('feedback-topo');
+      const inputId    = document.getElementById('topo-id');
+      const inputEmail = document.getElementById('topo-email');
 
       function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
       function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); hide();
-        const id    = form['id'].value.trim();
-        const email = form['email'].value.trim();
+        const id    = inputId.value.trim();
+        const email = inputEmail.value.trim();
         if (!id || !email) {
           show('error', '⚠️ Por favor, preencha o ID e o e-mail antes de enviar.');
           return;
@@ -392,18 +394,21 @@
 
     // Formulário do ITEM 4 — ID, email e whatsapp
     (function() {
-      const form     = document.getElementById('id-form');
+      const form     = document.getElementById('id-form-step4');
       const btn      = document.getElementById('btn-enviar');
       const feedback = document.getElementById('form-feedback');
+      const inputId       = document.getElementById('campo-id');
+      const inputEmail    = document.getElementById('campo-email');
+      const inputWhatsapp = document.getElementById('campo-whatsapp');
 
       function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
       function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); hide();
-        const id       = form['id'].value.trim();
-        const email    = form['email'].value.trim();
-        const whatsapp = form['whatsapp'].value.trim();
+        const id       = inputId.value.trim();
+        const email    = inputEmail.value.trim();
+        const whatsapp = inputWhatsapp.value.trim();
         if (!id || !email || !whatsapp) {
           show('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
           return;
