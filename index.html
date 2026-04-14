@@ -16,277 +16,123 @@
       min-height: 100dvh;
       line-height: 1.6;
     }
-
     .site-header { width: 100%; display: block; position: relative; }
     .site-header img.banner-img {
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
-
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
       padding: .85rem 1rem;
       text-align: center;
     }
-    .faixa-gratis p {
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: #4ade80;
-      letter-spacing: .03em;
-      line-height: 1.4;
-    }
+    .faixa-gratis p { font-size: 1.1rem; font-weight: 900; color: #4ade80; letter-spacing: .03em; line-height: 1.4; }
     .faixa-gratis span {
-      display: inline-block;
-      background: #22c55e;
-      color: #052e16;
-      font-size: 1.25rem;
-      font-weight: 900;
-      padding: .15rem .7rem;
-      border-radius: 2rem;
-      margin-right: .4rem;
-      letter-spacing: .04em;
+      display: inline-block; background: #22c55e; color: #052e16;
+      font-size: 1.25rem; font-weight: 900; padding: .15rem .7rem;
+      border-radius: 2rem; margin-right: .4rem; letter-spacing: .04em;
     }
-
     .intro-atencao {
-      background: #2a1d08;
-      border-left: 4px solid #f59e0b;
-      border-radius: .7rem;
-      padding: 1rem 1.2rem;
-      margin: 1.4rem 1rem 0;
-      font-size: .97rem;
-      color: #fde68a;
-      line-height: 1.7;
-      font-weight: 700;
+      background: #2a1d08; border-left: 4px solid #f59e0b; border-radius: .7rem;
+      padding: 1rem 1.2rem; margin: 1.4rem 1rem 0;
+      font-size: .97rem; color: #fde68a; line-height: 1.7; font-weight: 700;
     }
-    .intro-atencao .linha2 {
-      display: block;
-      margin-top: .45rem;
-      font-weight: 500;
-      color: #fcd34d;
-      font-size: .93rem;
-    }
-
+    .intro-atencao .linha2 { display: block; margin-top: .45rem; font-weight: 500; color: #fcd34d; font-size: .93rem; }
     .steps-container {
-      max-width: 700px;
-      margin: 1.4rem auto 3rem;
-      padding: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
+      max-width: 700px; margin: 1.4rem auto 3rem; padding: 0 1rem;
+      display: flex; flex-direction: column; gap: .75rem;
     }
-    .step-card {
-      background: #221529;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1.5px solid #3a2045;
-    }
+    .step-card { background: #221529; border-radius: 1rem; overflow: hidden; border: 1.5px solid #3a2045; }
     .step-header {
-      display: flex;
-      align-items: center;
-      gap: .85rem;
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 1.1rem 1.2rem;
-      cursor: pointer;
-      text-align: left;
-      color: #f0e6f6;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      transition: background .18s;
+      display: flex; align-items: center; gap: .85rem; width: 100%;
+      background: none; border: none; padding: 1.1rem 1.2rem; cursor: pointer;
+      text-align: left; color: #f0e6f6; font-family: inherit;
+      font-size: 1rem; font-weight: 700; transition: background .18s;
     }
     .step-header:hover { background: rgba(233,30,140,0.08); }
     .step-header[aria-expanded="true"] { background: rgba(233,30,140,0.1); }
     .step-number {
-      background: #e91e8c;
-      color: #fff;
-      font-size: .82rem;
-      font-weight: 800;
-      border-radius: .5rem;
-      min-width: 2.1rem;
-      height: 2.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      background: #e91e8c; color: #fff; font-size: .82rem; font-weight: 800;
+      border-radius: .5rem; min-width: 2.1rem; height: 2.1rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .step-title { flex: 1; }
-    .step-arrow {
-      color: #e91e8c;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      transition: transform .25s cubic-bezier(.16,1,.3,1);
-    }
+    .step-arrow { color: #e91e8c; font-size: 1.1rem; flex-shrink: 0; transition: transform .25s cubic-bezier(.16,1,.3,1); }
     .step-header[aria-expanded="true"] .step-arrow { transform: rotate(180deg); }
     .step-content { display: none; }
     .step-content.open { display: block; }
     .step-body {
-      padding: 0 1.2rem 1.4rem;
-      border-top: 1.5px solid #3a2045;
-      padding-top: 1rem;
-      font-size: .95rem;
-      color: #d8c8ea;
-      line-height: 1.75;
+      padding: 0 1.2rem 1.4rem; border-top: 1.5px solid #3a2045;
+      padding-top: 1rem; font-size: .95rem; color: #d8c8ea; line-height: 1.75;
     }
     .step-body p { margin-bottom: .7rem; }
     .step-body ul { padding-left: 1.4rem; margin-bottom: .8rem; }
     .step-body ul li { margin-bottom: .35rem; }
     .step-body strong { color: #f0e6f6; }
-    .alert {
-      border-radius: .6rem;
-      padding: .75rem 1rem;
-      margin: .7rem 0;
-      font-size: .92rem;
-      line-height: 1.55;
-    }
+    .alert { border-radius: .6rem; padding: .75rem 1rem; margin: .7rem 0; font-size: .92rem; line-height: 1.55; }
     .alert-warning { background: #2a1d08; border-left: 4px solid #f59e0b; color: #fde68a; }
     .alert-error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
     .alert-success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .alert-info    { background: #0d1a2a; border-left: 4px solid #60a5fa; color: #bfdbfe; }
     .alert-pink    { background: #2a0d1e; border-left: 4px solid #e91e8c; color: #f9a8d4; }
-    .step-images {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-    .img-block {
-      flex: 1;
-      min-width: 140px;
-      max-width: 240px;
-      text-align: center;
-    }
+    .step-images { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+    .img-block { flex: 1; min-width: 140px; max-width: 240px; text-align: center; }
     .img-block img, .img-single {
-      width: 100%;
-      border-radius: .75rem;
-      border: 2px solid #3a2045;
-      display: block;
-      margin: 0 auto;
-      max-width: 280px;
+      width: 100%; border-radius: .75rem; border: 2px solid #3a2045;
+      display: block; margin: 0 auto; max-width: 280px;
     }
     .img-single { margin: 1rem auto; }
-    .img-caption {
-      font-size: .82rem;
-      color: #c4a8d8;
-      margin-top: .4rem;
-      line-height: 1.4;
-    }
-    .cta-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .7rem;
-      margin-top: 1rem;
-    }
+    .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; }
+    .cta-links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
     .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: #25D366;
-      color: #fff;
-      font-family: inherit;
-      font-size: .93rem;
-      font-weight: 700;
-      padding: .65rem 1.2rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: #25D366; color: #fff; font-family: inherit;
+      font-size: .93rem; font-weight: 700; padding: .65rem 1.2rem;
+      border-radius: 2rem; text-decoration: none; border: none; cursor: pointer;
       transition: background .18s, transform .12s;
     }
     .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
 
-    /* ── Formulário Passo 4 ── */
-    .id-form {
-      display: flex;
-      flex-direction: column;
-      gap: .85rem;
-      margin-top: 1rem;
-    }
-    .id-form .field {
-      display: flex;
-      flex-direction: column;
-      gap: .35rem;
-    }
-    .id-form label {
-      font-size: .88rem;
-      font-weight: 700;
-      color: #e0c8f0;
-      letter-spacing: .02em;
-    }
+    /* Formulário */
+    .id-form { display: flex; flex-direction: column; gap: .85rem; margin-top: 1rem; }
+    .id-form .field { display: flex; flex-direction: column; gap: .35rem; }
+    .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
     .id-form input {
-      background: #150d1c;
-      border: 1.5px solid #4a2560;
-      border-radius: .6rem;
-      padding: .75rem 1rem;
-      font-size: 1rem;
-      font-family: inherit;
-      color: #f0e6f6;
-      outline: none;
-      transition: border-color .18s, box-shadow .18s;
-      width: 100%;
-      min-height: 44px;
+      background: #150d1c; border: 1.5px solid #4a2560; border-radius: .6rem;
+      padding: .75rem 1rem; font-size: 1rem; font-family: inherit; color: #f0e6f6;
+      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 44px;
     }
     .id-form input::placeholder { color: #6a4880; }
-    .id-form input:focus {
-      border-color: #e91e8c;
-      box-shadow: 0 0 0 3px rgba(233,30,140,0.18);
-    }
+    .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
     .btn-enviar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      background: #e91e8c;
-      color: #fff;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 800;
-      padding: .85rem 1.2rem;
-      border-radius: 2rem;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      min-height: 48px;
-      margin-top: .3rem;
-      transition: background .18s, transform .12s, opacity .18s;
-      letter-spacing: .02em;
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      background: #e91e8c; color: #fff; font-family: inherit; font-size: 1rem;
+      font-weight: 800; padding: .85rem 1.2rem; border-radius: 2rem; border: none;
+      cursor: pointer; width: 100%; min-height: 48px; margin-top: .3rem;
+      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
     }
     .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
     .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
     .btn-enviar .spinner {
-      width: 18px; height: 18px;
-      border: 2.5px solid rgba(255,255,255,0.4);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      display: none;
+      width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin .7s linear infinite; display: none;
     }
     .btn-enviar.loading .spinner { display: block; }
     .btn-enviar.loading .btn-text { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
     .form-feedback {
-      border-radius: .6rem;
-      padding: .8rem 1rem;
-      font-size: .93rem;
-      font-weight: 700;
-      line-height: 1.5;
-      display: none;
-      margin-top: .3rem;
+      border-radius: .6rem; padding: .8rem 1rem; font-size: .93rem;
+      font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem;
     }
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
 
     .site-footer {
-      text-align: center;
-      padding: 1.5rem 1rem 2.5rem;
-      font-size: .85rem;
-      color: #7a5c8a;
-      border-top: 1px solid #2a1a2e;
+      text-align: center; padding: 1.5rem 1rem 2.5rem;
+      font-size: .85rem; color: #7a5c8a; border-top: 1px solid #2a1a2e;
     }
     .site-footer strong { color: #c084fc; }
     .footer-small { margin-top: .3rem; color: #5a4068; }
@@ -308,8 +154,7 @@
       class="banner-img"
       src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/banner-topo.jpg"
       alt="Carla.agenciayaar – Ganhe Dinheiro Atendendo Chamadas de Vídeo"
-      width="1310"
-      height="655"
+      width="1310" height="655"
     />
   </header>
 
@@ -324,7 +169,6 @@
 
   <main class="steps-container" id="main-content">
 
-    <!-- PASSO 1 — ANDROID -->
     <article class="step-card" id="step-1">
       <button class="step-header" aria-expanded="false" aria-controls="content-1">
         <span class="step-number">01</span>
@@ -334,32 +178,25 @@
       <div class="step-content" id="content-1">
         <div class="step-body">
           <p>Para baixar o app, você precisa entrar no site oficial:</p>
-          <div class="alert alert-pink">
-            🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a>
-          </div>
+          <div class="alert alert-pink">🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a></div>
           <p>No site, clique no botão com o robozinho 🤖</p>
           <p>Na hora de instalar, o celular vai mostrar um <strong>aviso do Google Play Protect</strong>.<br>É normal. Você precisa clicar onde eu estou explicando aqui em baixo nas fotos:</p>
-          <div class="alert alert-error">
-            🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!
-          </div>
+          <div class="alert alert-error">🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!</div>
           <div class="step-images">
             <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-1.jpg" alt="Aviso Google Play Protect - clicar em Mais detalhes" loading="lazy" />
-              <p class="img-caption">1️⃣ Clique em <strong>"Mais detalhes"</strong> — NÃO em "Entendi"</p>
+              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-1.jpg" alt="Aviso Google Play Protect" loading="lazy" />
+              <p class="img-caption">1️⃣ Clique em <strong>"Mais detalhes"</strong></p>
             </div>
             <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-2.jpg" alt="Segunda tela - clicar em Instalar assim mesmo" loading="lazy" />
+              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-2.jpg" alt="Instalar assim mesmo" loading="lazy" />
               <p class="img-caption">2️⃣ Clique em <strong>"Instalar assim mesmo"</strong></p>
             </div>
           </div>
-          <div class="alert alert-success">
-            ✅ Pronto! O app vai instalar normalmente depois disso.
-          </div>
+          <div class="alert alert-success">✅ Pronto! O app vai instalar normalmente depois disso.</div>
         </div>
       </div>
     </article>
 
-    <!-- PASSO 2 — IPHONE -->
     <article class="step-card" id="step-2">
       <button class="step-header" aria-expanded="false" aria-controls="content-2">
         <span class="step-number">02</span>
@@ -369,9 +206,7 @@
       <div class="step-content" id="content-2">
         <div class="step-body">
           <p>Para baixar o app, você precisa entrar no site oficial:</p>
-          <div class="alert alert-pink">
-            🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a>
-          </div>
+          <div class="alert alert-pink">🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a></div>
           <p>Depois de entrar no site, escolha iPhone.<br>Depois de baixar, siga esses passos nas configurações do celular:</p>
           <ul>
             <li>1️⃣ Vá em <strong>Ajustes</strong> do celular</li>
@@ -382,17 +217,12 @@
             <li>6️⃣ Clique em <strong>Permitir</strong></li>
             <li>7️⃣ <strong>Reinicie o celular</strong></li>
           </ul>
-          <div class="alert alert-success">
-            ✅ Depois de reiniciar, o app vai abrir normalmente!
-          </div>
-          <div class="alert alert-warning">
-            ⚠️ Se tiver dificuldade, manda mensagem para a Carla que ela te ajuda.
-          </div>
+          <div class="alert alert-success">✅ Depois de reiniciar, o app vai abrir normalmente!</div>
+          <div class="alert alert-warning">⚠️ Se tiver dificuldade, manda mensagem para a Carla que ela te ajuda.</div>
         </div>
       </div>
     </article>
 
-    <!-- PASSO 3 — FOTO -->
     <article class="step-card" id="step-3">
       <button class="step-header" aria-expanded="false" aria-controls="content-3">
         <span class="step-number">03</span>
@@ -404,25 +234,20 @@
           <p>Depois de criar sua conta no app, você precisa <strong>colocar uma foto no seu perfil</strong>.</p>
           <div class="step-images">
             <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/sua-foto.jpg" alt="Tela do perfil mostrando a foto adicionada" loading="lazy" />
-              <p class="img-caption">📸 <strong>Com foto:</strong> assim fica quando você adicionar sua foto corretamente</p>
+              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/sua-foto.jpg" alt="Perfil com foto" loading="lazy" />
+              <p class="img-caption">📸 <strong>Com foto:</strong> assim fica corretamente</p>
             </div>
             <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Tela do perfil mostrando o avatar bonequinha sem foto" loading="lazy" />
-              <p class="img-caption">🙋 <strong>Com bonequinha:</strong> mesmo assim, não se preocupe! Isso é normal</p>
+              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Perfil com bonequinha" loading="lazy" />
+              <p class="img-caption">🙋 <strong>Com bonequinha:</strong> é normal!</p>
             </div>
           </div>
-          <div class="alert alert-warning">
-            ⚠️ <strong>Atenção:</strong> Mesmo depois de colocar a foto, a tela pode continuar mostrando o avatar (bonequinha). Isso é normal! Não precisa se preocupar.
-          </div>
-          <div class="alert alert-success">
-            ✅ O importante é ter colocado a foto no quadradinho, igual mostra na imagem. Pode seguir para o próximo passo!
-          </div>
+          <div class="alert alert-warning">⚠️ <strong>Atenção:</strong> Mesmo depois de colocar a foto, a tela pode continuar mostrando o avatar. Isso é normal!</div>
+          <div class="alert alert-success">✅ O importante é ter colocado a foto. Pode seguir para o próximo passo!</div>
         </div>
       </div>
     </article>
 
-    <!-- PASSO 4 — ID -->
     <article class="step-card" id="step-4">
       <button class="step-header" aria-expanded="false" aria-controls="content-4">
         <span class="step-number">04</span>
@@ -431,47 +256,23 @@
       </button>
       <div class="step-content" id="content-4">
         <div class="step-body">
-          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo. É esse número que vai ativar sua conta para receber as chamadas e ganhar dinheiro.</p>
-          <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Tela de perfil mostrando o número de ID abaixo do avatar" class="img-single" loading="lazy" />
+          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo.</p>
+          <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/perfil-id.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
           <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
-
           <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
 
           <form class="id-form" id="id-form" novalidate>
             <div class="field">
               <label for="campo-id">🔢 Seu número de ID no app</label>
-              <input
-                type="text"
-                id="campo-id"
-                name="id"
-                placeholder="Ex: 123456789"
-                inputmode="numeric"
-                autocomplete="off"
-                required
-              />
+              <input type="text" id="campo-id" name="id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
             </div>
             <div class="field">
               <label for="campo-email">📧 Seu e-mail de contato</label>
-              <input
-                type="email"
-                id="campo-email"
-                name="email"
-                placeholder="Ex: seuemail@gmail.com"
-                autocomplete="email"
-                required
-              />
+              <input type="email" id="campo-email" name="email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
-              <input
-                type="tel"
-                id="campo-whatsapp"
-                name="whatsapp"
-                placeholder="Ex: 32991234567"
-                inputmode="numeric"
-                autocomplete="tel"
-                required
-              />
+              <input type="tel" id="campo-whatsapp" name="whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
             </div>
 
             <div class="form-feedback" id="form-feedback" role="alert"></div>
@@ -483,13 +284,12 @@
           </form>
 
           <div class="alert alert-warning" style="margin-top:1rem;">
-            ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada e você não recebe chamadas.
+            ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada.
           </div>
         </div>
       </div>
     </article>
 
-    <!-- PASSO 5 — ATIVAÇÃO -->
     <article class="step-card" id="step-5">
       <button class="step-header" aria-expanded="false" aria-controls="content-5">
         <span class="step-number">05</span>
@@ -508,9 +308,7 @@
             ☑️ Preencheu o formulário com ID, e-mail e WhatsApp<br>
             ☑️ Aguardou a confirmação da Carla
           </div>
-          <div class="alert alert-pink">
-            🌸 Tudo certo? Então você está pronta para começar! Boa sorte e bem-vinda à agência! 💕
-          </div>
+          <div class="alert alert-pink">🌸 Tudo certo? Então você está pronta para começar! Bem-vinda à agência! 💕</div>
           <p style="margin-top:.8rem;">Dúvidas? Fale com a Carla:</p>
           <div class="cta-links">
             <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
@@ -531,17 +329,15 @@
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
-        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        const content  = document.getElementById(btn.getAttribute('aria-controls'));
         btn.setAttribute('aria-expanded', String(!expanded));
         content.classList.toggle('open', !expanded);
       });
     });
 
-    // ── Formulário Passo 4 ──
-    // Usa corsproxy.io para contornar CORS e envia JSON
-    // O Apps Script espera JSON.parse(e.postData.contents)
+    // ── Formulário ──
+    // Usa GET com parâmetros na URL — sem CORS, sem proxy, funciona sempre
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
-    const PROXY_URL  = 'https://corsproxy.io/?' + encodeURIComponent(SHEETS_URL);
 
     const form     = document.getElementById('id-form');
     const btn      = document.getElementById('btn-enviar');
@@ -573,10 +369,11 @@
       btn.classList.add('loading');
 
       try {
-        const res = await fetch(PROXY_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, email, whatsapp })
+        // GET com parâmetros na URL — Google Apps Script doGet nunca bloqueia CORS
+        const params = new URLSearchParams({ id, email, whatsapp });
+        const res    = await fetch(SHEETS_URL + '?' + params.toString(), {
+          method: 'GET',
+          redirect: 'follow'
         });
 
         const json = await res.json();
