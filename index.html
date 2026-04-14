@@ -21,31 +21,12 @@
       width: 100%; height: auto; display: block;
       max-height: 420px; object-fit: cover; object-position: center top;
     }
-
-    /* ===== FORMULÁRIO TOPO ===== */
     .form-topo {
       background: #221529;
       border-bottom: 2px solid #3a2045;
-      padding: 1.4rem 1rem 1.6rem;
+      padding: 1.2rem 1rem 1.4rem;
     }
-    .form-topo-inner {
-      max-width: 520px;
-      margin: 0 auto;
-    }
-    .form-topo-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #f0e6f6;
-      text-align: center;
-      margin-bottom: .25rem;
-    }
-    .form-topo-sub {
-      font-size: .88rem;
-      color: #c4a8d8;
-      text-align: center;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
+    .form-topo-inner { max-width: 520px; margin: 0 auto; }
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -80,8 +61,6 @@
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
-    /* ===== FIM FORMULÁRIO TOPO ===== */
-
     .faixa-gratis {
       background: #14532d;
       border-bottom: 3px solid #22c55e;
@@ -167,7 +146,7 @@
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
       .faixa-gratis p { font-size: 1rem; }
       .faixa-gratis span { font-size: 1.1rem; }
-      .form-topo { padding: 1.2rem .75rem 1.4rem; }
+      .form-topo { padding: 1rem .75rem 1.2rem; }
     }
   </style>
 </head>
@@ -182,11 +161,8 @@
     />
   </header>
 
-  <!-- FORMULÁRIO TOPO -->
   <section class="form-topo">
     <div class="form-topo-inner">
-      <p class="form-topo-title">📝 Cadastre seu ID e receba o material</p>
-      <p class="form-topo-sub">Preencha os campos abaixo para a Carla ativar seu perfil e enviar o material no seu e-mail.</p>
       <form class="id-form" id="id-form-topo" novalidate>
         <div class="field">
           <label for="topo-id">🔢 Seu número de ID no app</label>
@@ -196,10 +172,6 @@
           <label for="topo-email">📧 Seu e-mail de contato</label>
           <input type="email" id="topo-email" name="email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
         </div>
-        <div class="field">
-          <label for="topo-whatsapp">📱 Seu WhatsApp com DDD</label>
-          <input type="tel" id="topo-whatsapp" name="whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
-        </div>
         <div class="form-feedback" id="feedback-topo" role="alert"></div>
         <button type="submit" class="btn-enviar" id="btn-topo">
           <span class="spinner" aria-hidden="true"></span>
@@ -208,7 +180,6 @@
       </form>
     </div>
   </section>
-  <!-- FIM FORMULÁRIO TOPO -->
 
   <div class="faixa-gratis">
     <p><span>✅ 100% GRÁTIS</span> Cadastro, download e uso são totalmente gratuitos!</p>
@@ -366,7 +337,7 @@
   <script>
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
 
-    function setupForm(formId, btnId, feedbackId) {
+    function setupForm(formId, btnId, feedbackId, hasWhatsapp) {
       const form     = document.getElementById(formId);
       const btn      = document.getElementById(btnId);
       const feedback = document.getElementById(feedbackId);
@@ -385,8 +356,8 @@
         hideFeedback();
         const id       = form['id'].value.trim();
         const email    = form['email'].value.trim();
-        const whatsapp = form['whatsapp'].value.trim();
-        if (!id || !email || !whatsapp) {
+        const whatsapp = hasWhatsapp ? form['whatsapp'].value.trim() : '';
+        if (!id || !email || (hasWhatsapp && !whatsapp)) {
           showFeedback('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
           return;
         }
@@ -411,8 +382,8 @@
       });
     }
 
-    setupForm('id-form-topo', 'btn-topo',    'feedback-topo');
-    setupForm('id-form',      'btn-enviar',  'form-feedback');
+    setupForm('id-form-topo', 'btn-topo',   'feedback-topo', false);
+    setupForm('id-form',      'btn-enviar', 'form-feedback', true);
 
     document.querySelectorAll('.step-header').forEach(btn => {
       btn.addEventListener('click', () => {
