@@ -15,6 +15,8 @@
       color: #f0e6f6;
       min-height: 100dvh;
       line-height: 1.6;
+      display: flex;
+      flex-direction: column;
     }
     .banner-topo { width: 100%; display: block; line-height: 0; }
     .banner-topo img { width: 100%; height: auto; display: block; object-fit: cover; }
@@ -24,9 +26,10 @@
 
     .escolha-celular {
       max-width: 700px;
-      margin: 2.5rem auto 3rem;
+      margin: 2.5rem auto;
       padding: 0 1rem;
       text-align: center;
+      flex: 1;
     }
     .escolha-celular .pergunta {
       font-size: 1.2rem;
@@ -75,12 +78,12 @@
 
     .site-footer {
       text-align: center;
-      padding: 1.5rem 1rem 2.5rem;
-      font-size: .85rem;
-      color: #b090c8;
+      padding: 1.2rem 1rem;
+      font-size: .82rem;
+      color: #8a6898;
       border-top: 1px solid rgba(90, 40, 110, 0.4);
+      margin-top: auto;
     }
-    .site-footer strong { color: #e0a0ff; }
 
     @media (max-width: 400px) {
       .btn-celular { width: 130px; height: 48px; font-size: .9rem; }
@@ -109,7 +112,7 @@
   </section>
 
   <footer class="site-footer">
-    <p><strong>Carla.appgringo</strong> direitos reservados 2026</p>
+    <p>&copy; 2026 Carla.appgringo. Todos os direitos reservados.</p>
   </footer>
 
 </body>
