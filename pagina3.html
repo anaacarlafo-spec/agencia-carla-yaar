@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carla.agenciayaar – Continuação do Tutorial iPhone</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link href="https://api.fontshare.com/v2/css?f[]=nunito@400,500,600,700,800,900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: none; }
+    body { font-family: 'Nunito', sans-serif; background-color: #18111a; color: #f0e6f6; min-height: 100dvh; line-height: 1.6; }
+    a { color: inherit; }
+    .steps-container { max-width: 700px; margin: 1.4rem auto 3rem; padding: 1rem 1rem 0; display: flex; flex-direction: column; gap: .75rem; }
+    .step-card { background: transparent; border-radius: 1rem; overflow: hidden; border: 1.5px solid rgba(90, 40, 110, 0.6); }
+    .step-header { display: flex; align-items: center; gap: .85rem; width: 100%; background: none; border: none; padding: 1.1rem 1.2rem; cursor: pointer; text-align: left; color: #f0e6f6; font-family: inherit; font-size: 1rem; font-weight: 700; transition: background .18s; }
+    .step-header:hover { background: rgba(233,30,140,0.08); }
+    .step-header[aria-expanded="true"] { background: rgba(233,30,140,0.1); }
+    .step-header.only-pink { justify-content: center; background: #e91e8c; color: #fff; border-radius: 999px; margin: .9rem 1rem 0; width: calc(100% - 2rem); padding: .9rem 1rem; }
+    .step-header.only-pink:hover { background: #c2177a; }
+    .step-header.only-pink[aria-expanded="true"] { background: #c2177a; }
+    .step-title.only-button { flex: 0 1 auto; text-align: center; letter-spacing: .03em; }
+    .step-number { background: #e91e8c; color: #fff; font-size: .82rem; font-weight: 800; border-radius: .5rem; min-width: 2.1rem; height: 2.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-title { flex: 1; }
+    .step-arrow { color: #e91e8c; font-size: 1.1rem; flex-shrink: 0; transition: transform .25s cubic-bezier(.16,1,.3,1); }
+    .step-header[aria-expanded="true"] .step-arrow { transform: rotate(180deg); }
+    .step-content { display: block; }
+    .step-content.collapsed { display: none; }
+    .step-body { padding: 0 1.2rem 1.4rem; border-top: 1.5px solid rgba(90, 40, 110, 0.5); padding-top: 1rem; font-size: .95rem; color: #d8c8ea; line-height: 1.75; }
+    .step-body p { margin-bottom: .7rem; }
+    .step-body ul { padding-left: 1.4rem; margin-bottom: .8rem; }
+    .step-body ul li { margin-bottom: .35rem; }
+    .step-body strong { color: #f0e6f6; }
+    .alert { border-radius: .6rem; padding: .75rem 1rem; margin: .7rem 0; font-size: .92rem; line-height: 1.55; }
+    .alert-warning { background: transparent; border-left: 4px solid #f59e0b; color: #fde68a; }
+    .alert-error { background: transparent; border-left: 4px solid #ef4444; color: #fecaca; }
+    .alert-success { background: transparent; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .step-images { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+    .img-block { flex: 1; min-width: 140px; max-width: 240px; text-align: center; }
+    .img-block img { width: 100%; border-radius: .75rem; border: 2px solid rgba(90, 40, 110, 0.6); display: block; margin: 0 auto; max-width: 280px; }
+    .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; }
+        .cta-center { text-align: center; margin: 1.2rem 0; }
+    .cta-link { display: inline; color: #f9a8d4; font-size: .95rem; font-weight: 700; text-decoration: underline; text-underline-offset: .18rem; }
+    .cta-link:hover { color: #ffd0ea; }
+    .id-form { display: flex; flex-direction: column; gap: .75rem; }
+    .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
+    .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
+    .id-form input { background: rgba(21, 13, 28, 0.7); border: 1.5px solid #4a2560; border-radius: .6rem; padding: .75rem 1rem; font-size: 1rem; font-family: inherit; color: #f0e6f6; outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 44px; }
+    .id-form input::placeholder { color: #6a4880; }
+    .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
+    .btn-enviar { display: flex; align-items: center; justify-content: center; gap: .5rem; background: #e91e8c; color: #fff; font-family: inherit; font-size: 1rem; font-weight: 800; padding: .85rem 1.2rem; border-radius: 2rem; border: none; cursor: pointer; width: 100%; min-height: 48px; margin-top: .2rem; transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em; }
+    .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
+    .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-enviar .spinner { width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; display: none; }
+    .btn-enviar.loading .spinner { display: block; }
+    .btn-enviar.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .form-feedback { border-radius: .6rem; padding: .7rem 1rem; font-size: .88rem; font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem; }
+    .form-feedback.show { display: block; }
+    .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
+    .form-feedback.error { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
+    .site-footer { text-align: center; padding: 1.5rem 1rem 2.5rem; font-size: .85rem; color: #b090c8; border-top: 1px solid rgba(90, 40, 110, 0.4); background: transparent; }
+    .site-footer strong { color: #e0a0ff; }
+    .footer-small { margin-top: .3rem; color: #8a6898; }
+    @media (max-width: 480px) { .steps-container { padding: 0 .75rem; } .step-header { padding: .95rem 1rem; font-size: .95rem; } .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; } }
+  </style>
+</head>
+<body>
+  <main class="steps-container" id="main-content">
+    <article class="step-card">
+      <div class="step-content" id="content-1">
+        <div class="step-body">
+          <p><strong>PRESTE BEM ATENÇÃO NESSE PASSO A PASSO</strong></p>
+          <p>Depois de entrar no site, escolha iPhone.</p>
+          <p>Depois de baixar, siga esses passos nas configurações do celular:</p>
+          <ul>
+            <li>1️⃣ Vá em <strong>Ajustes</strong> do celular</li>
+            <li>2️⃣ Clique em <strong>Geral</strong></li>
+            <li>3️⃣ Clique em <strong>Gestão de VPN e Gerenciamento de Dispositivo</strong></li>
+            <li>4️⃣ Clique no nome <strong>XL…</strong></li>
+            <li>5️⃣ Clique em <strong>Confiar em XL…</strong></li>
+            <li>6️⃣ Clique em <strong>Permitir</strong></li>
+            <li>7️⃣ <strong>Reinicie o celular</strong></li>
+          </ul>
+          <p><strong>SITE OFICIAL PARA INSTALAÇÃO. DEPOIS DE FAZER ESSE PASSO 1, RETORNE AQUI PARA FAZER O PASSO 2.</strong></p>
+          <div class="cta-center">
+            <a class="cta-link" href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer">WWW.YAARLIVE.COM</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="step-card">
+      <button class="step-header only-pink" aria-expanded="false" aria-controls="content-2">
+        <span class="step-title only-button">PASSO 2</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="step-content collapsed" id="content-2">
+        <div class="step-body">
+          <div class="alert alert-error">📸 <strong>É obrigatório colocar pelo menos 1 foto para seu perfil ser aceito.</strong></div>
+          <div class="step-images">
+            <div class="img-block">
+              <img src="assets/img/sua-foto.jpg" alt="Exemplo de perfil com foto adicionada" loading="lazy" width="240" height="320" />
+              <p class="img-caption">📸 <strong>Imagem 1 — adicione sua foto</strong></p>
+            </div>
+            <div class="img-block">
+              <img src="assets/img/perfil-id.jpg" alt="Perfil com bonequinha aguardando aprovação" loading="lazy" width="240" height="320" />
+              <p class="img-caption">📸 <strong>Imagem 2 - Ficará com uma bonequinha até ser aprovada</strong></p>
+            </div>
+          </div>
+          <div class="alert alert-warning">⚠️ <strong>Atenção:</strong> SUA FOTO ESTÁ SENDO AVALIADA PELA EQUIPE, É NORMAL FICAR A BONEQUINHA ATÉ QUE SEJA APROVADA.</div>
+          <p><strong>DEPOIS DE FAZER ESSE PASSO 2, RETORNE AQUI PARA FAZER O PASSO 3</strong></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="step-card">
+      <button class="step-header only-pink" aria-expanded="false" aria-controls="content-3">
+        <span class="step-title only-button">PASSO 3</span>
+        <span class="step-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="step-content collapsed" id="content-3">
+        <div class="step-body">
+          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo.</p>
+          <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
+          <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
+          <form class="id-form" id="id-form-step4" novalidate>
+            <div class="field">
+              <label for="campo-id">🔢 Seu número de ID no app</label>
+              <input type="text" id="campo-id" name="campo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
+            </div>
+            <div class="field">
+              <label for="campo-email">📧 Seu e-mail de contato</label>
+              <input type="email" id="campo-email" name="campo-email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
+              <input type="tel" id="campo-whatsapp" name="campo-whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
+            </div>
+            <div class="form-feedback" id="form-feedback" role="alert"></div>
+            <button type="submit" class="btn-enviar" id="btn-enviar">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn-text">✉️ Enviar meus dados</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Agência <strong>Carla.agenciayaar</strong> · Material de ajuda oficial</p>
+    <p class="footer-small">Dúvidas? Fale com a Carla no grupo da agência 💬</p>
+  </footer>
+
+  <script>
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
+    (function() {
+      const form = document.getElementById('id-form-step4');
+      const btn  = document.getElementById('btn-enviar');
+      const feedback = document.getElementById('form-feedback');
+      const inputId = document.getElementById('campo-id');
+      const inputEmail = document.getElementById('campo-email');
+      const inputWhatsapp = document.getElementById('campo-whatsapp');
+      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
+      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); hide();
+        const id = inputId.value.trim(), email = inputEmail.value.trim(), whatsapp = inputWhatsapp.value.trim();
+        if (!id || !email || !whatsapp) { show('error', '⚠️ Por favor, preencha todos os campos antes de enviar.'); return; }
+        btn.disabled = true; btn.classList.add('loading');
+        try {
+          const res = await fetch(SHEETS_URL + '?' + new URLSearchParams({ id, email, whatsapp }), { method: 'GET', redirect: 'follow' });
+          const json = await res.json();
+          if (json.status === 'success') { show('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕'); form.reset(); }
+          else { show('error', '❌ Erro: ' + (json.message || 'tente novamente.')); }
+        } catch { show('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.'); }
+        finally { btn.disabled = false; btn.classList.remove('loading'); }
+      });
+    })();
+    document.querySelectorAll('.step-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+        content.classList.toggle('collapsed', expanded);
+      });
+    });
+  </script>
+</body>
+</html>
