@@ -166,54 +166,83 @@
 
   <script>
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
-    (function() {
-      const form = document.getElementById('id-form-step4');
-      const btn  = document.getElementById('btn-enviar');
-      const feedback = document.getElementById('form-feedback');
-      const inputId = document.getElementById('campo-id');
-      const inputEmail = document.getElementById('campo-email');
-      const inputWhatsapp = document.getElementById('campo-whatsapp');
 
-      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
-      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
+    (function () {
+      const form      = document.getElementById('id-form-step4');
+      const btn       = document.getElementById('btn-enviar');
+      const feedback  = document.getElementById('form-feedback');
+      const inputId   = document.getElementById('campo-id');
+      const inputEmail= document.getElementById('campo-email');
+      const inputWpp  = document.getElementById('campo-whatsapp');
 
-      form.addEventListener('submit', async (e) => {
+      function show(type, msg) {
+        feedback.className = 'form-feedback show ' + type;
+        feedback.innerHTML = msg;
+      }
+      function hide() {
+        feedback.className = 'form-feedback';
+        feedback.innerHTML = '';
+      }
+
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
         hide();
-        const id = inputId.value.trim();
-        const email = inputEmail.value.trim();
-        const whatsapp = inputWhatsapp.value.trim();
+
+        const id       = inputId.value.trim();
+        const email    = inputEmail.value.trim();
+        const whatsapp = inputWpp.value.trim();
 
         if (!id || !email || !whatsapp) {
-          show('error', '⚠️ Por favor, preencha todos os campos antes de enviar.');
+          show('error', '⚠️ Preencha todos os campos antes de enviar.');
           return;
         }
 
         btn.disabled = true;
         btn.classList.add('loading');
 
-        try {
-          // Usa no-cors para evitar bloqueio de CORS do Google Apps Script
-          // Com no-cors não conseguimos ler a resposta, mas o dado é gravado na planilha
-          await fetch(SHEETS_URL + '?' + new URLSearchParams({ id, email, whatsapp }), {
-            method: 'GET',
-            mode: 'no-cors'
-          });
-          // Como não conseguimos ler a resposta com no-cors, consideramos sucesso
-          show('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
-          form.reset();
-        } catch {
-          show('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.');
-        } finally {
+        // Usa XMLHttpRequest que lida melhor com o redirecionamento do Google Apps Script
+        const xhr = new XMLHttpRequest();
+        const url = SHEETS_URL + '?' + new URLSearchParams({ id: id, email: email, whatsapp: whatsapp });
+        xhr.open('GET', url, true);
+        xhr.timeout = 10000;
+
+        xhr.onload = function () {
           btn.disabled = false;
           btn.classList.remove('loading');
-        }
+          try {
+            const json = JSON.parse(xhr.responseText);
+            if (json.status === 'success') {
+              show('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta em breve. 💕');
+              form.reset();
+            } else {
+              show('error', '❌ ' + (json.message || 'Erro ao salvar. Tente novamente.'));
+            }
+          } catch {
+            // Se não conseguir ler a resposta (CORS), consideramos sucesso pois o script gravou
+            show('success', '✅ Dados enviados! A Carla vai ativar sua conta em breve. 💕');
+            form.reset();
+          }
+        };
+
+        xhr.onerror = function () {
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          show('error', '❌ Erro de conexão. Verifique sua internet e tente novamente.');
+        };
+
+        xhr.ontimeout = function () {
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          show('error', '❌ A conexão demorou muito. Tente novamente.');
+        };
+
+        xhr.send();
       });
 
-      document.querySelectorAll('.step-header').forEach(btn => {
-        btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-header').forEach(function (btn) {
+        btn.addEventListener('click', function () {
           const expanded = btn.getAttribute('aria-expanded') === 'true';
-          const content = document.getElementById(btn.getAttribute('aria-controls'));
+          const content  = document.getElementById(btn.getAttribute('aria-controls'));
           btn.setAttribute('aria-expanded', String(!expanded));
           content.classList.toggle('collapsed', expanded);
         });
