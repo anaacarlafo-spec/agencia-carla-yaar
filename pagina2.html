@@ -37,8 +37,19 @@
     .alert-success { background: transparent; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .alert-pink { background: transparent; border-left: 4px solid #e91e8c; color: #f9a8d4; }
     .step-images { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
-    .img-block { flex: 1; min-width: 140px; max-width: 240px; text-align: center; }
-    .img-block img, .img-single { width: 100%; border-radius: .75rem; border: 2px solid rgba(90, 40, 110, 0.6); display: block; margin: 0 auto; max-width: 280px; }
+    .img-block { flex: 1; min-width: 130px; max-width: 220px; text-align: center; }
+    .img-block img {
+      width: 100%;
+      height: 320px;
+      max-width: 220px;
+      object-fit: contain;
+      border-radius: .75rem;
+      border: 2px solid rgba(90, 40, 110, 0.6);
+      display: block;
+      margin: 0 auto;
+      background: #120d18;
+    }
+    .img-single { width: 100%; max-width: 280px; height: auto; object-fit: contain; border-radius: .75rem; border: 2px solid rgba(90, 40, 110, 0.6); display: block; margin: 1rem auto; }
     .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; }
     .cta-link { display: inline; color: #ffffff; font-size: .95rem; font-weight: 700; text-decoration: underline; text-underline-offset: .18rem; }
     .cta-link:hover { color: #ffffff; opacity: .88; }
@@ -62,7 +73,12 @@
     .site-footer { text-align: center; padding: 1.5rem 1rem 2.5rem; font-size: .85rem; color: #b090c8; border-top: 1px solid rgba(90, 40, 110, 0.4); background: transparent; }
     .site-footer strong { color: #e0a0ff; }
     .footer-small { margin-top: .3rem; color: #8a6898; }
-    @media (max-width: 480px) { .steps-container { padding: 0 .75rem; } .step-header { padding: .95rem 1rem; font-size: .95rem; } .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; } }
+    @media (max-width: 480px) {
+      .steps-container { padding: 0 .75rem; }
+      .step-header { padding: .95rem 1rem; font-size: .95rem; }
+      .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
+      .img-block img { height: 260px; }
+    }
   </style>
 </head>
 <body>
@@ -76,11 +92,11 @@
           <div class="alert alert-error">🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!</div>
           <div class="step-images">
             <div class="img-block">
-              <img src="assets/img/aviso-1.jpg" alt="Aviso de instalação no celular" loading="lazy" width="240" height="380" />
+              <img src="assets/img/aviso-1.jpg" alt="Aviso de instalação no celular" loading="lazy" />
               <p class="img-caption">1️⃣ Clique em <strong>"Mais detalhes"</strong></p>
             </div>
             <div class="img-block">
-              <img src="assets/img/aviso-2.jpg" alt="Instalar assim mesmo" loading="lazy" width="240" height="380" />
+              <img src="assets/img/aviso-2.jpg" alt="Instalar assim mesmo" loading="lazy" />
               <p class="img-caption">2️⃣ Clique em <strong>"Instalar assim mesmo"</strong></p>
             </div>
           </div>
@@ -99,11 +115,11 @@
           <div class="alert alert-error">📸 <strong>É obrigatório colocar pelo menos 1 foto para seu perfil ser aceito.</strong></div>
           <div class="step-images">
             <div class="img-block">
-              <img src="assets/img/sua-foto.jpg" alt="Exemplo de perfil com foto adicionada" loading="lazy" width="240" height="320" />
+              <img src="assets/img/sua-foto.jpg" alt="Exemplo de perfil com foto adicionada" loading="lazy" />
               <p class="img-caption">📸 <strong>Imagem 1 — adicione sua foto</strong></p>
             </div>
             <div class="img-block">
-              <img src="assets/img/perfil-id.jpg" alt="Perfil com bonequinha aguardando aprovação" loading="lazy" width="240" height="320" />
+              <img src="assets/img/perfil-id.jpg" alt="Perfil com bonequinha aguardando aprovação" loading="lazy" />
               <p class="img-caption">📸 <strong>Imagem 2 - Ficará com uma bonequinha até ser aprovada</strong></p>
             </div>
           </div>
