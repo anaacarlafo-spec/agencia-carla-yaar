@@ -19,18 +19,69 @@
 
     .site-header { display: none; }
 
-    .banner-topo {
-      width: 100%;
-      display: block;
-      line-height: 0;
+    .banner-topo { width: 100%; display: block; line-height: 0; }
+    .banner-topo img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+    .faixa-gratis { background: rgb(20, 83, 45); padding: .65rem 1rem; text-align: center; }
+    .faixa-gratis .linha1 { display: block; font-size: 1rem; font-weight: 900; color: #4ade80; letter-spacing: .03em; line-height: 1.3; }
+    .faixa-gratis .linha2 { display: block; font-size: .85rem; font-weight: 700; color: #4ade80; letter-spacing: .01em; line-height: 1.4; margin-top: .15rem; }
+
+    /* ── SELEÇÃO DE CELULAR ── */
+    .escolha-celular {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+      text-align: center;
     }
-    .banner-topo img {
-      width: 100%;
-      height: auto;
+    .escolha-celular .pergunta {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #f0e6f6;
+      margin-bottom: 1.4rem;
+      line-height: 1.5;
+    }
+    .escolha-celular .pergunta span {
       display: block;
-      object-fit: cover;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #c4a8d8;
+      margin-top: .3rem;
+    }
+    .botoes-celular {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .btn-celular {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      background: #e91e8c;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .18s, transform .12s;
+      min-width: 140px;
+      letter-spacing: .02em;
+    }
+    .btn-celular:hover { background: #c2177a; transform: translateY(-2px); }
+    .ou-separador {
+      font-size: .95rem;
+      font-weight: 800;
+      color: #fff;
+      padding: 0 1.1rem;
+      flex-shrink: 0;
     }
 
+    /* ── ACCORDIONS ── */
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
     .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
     .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
@@ -64,18 +115,6 @@
     .form-feedback.show { display: block; }
     .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
     .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
-
-    .faixa-gratis {
-      background: rgb(20, 83, 45); padding: .65rem 1rem; text-align: center;
-    }
-    .faixa-gratis .linha1 {
-      display: block; font-size: 1rem; font-weight: 900; color: #4ade80;
-      letter-spacing: .03em; line-height: 1.3;
-    }
-    .faixa-gratis .linha2 {
-      display: block; font-size: .85rem; font-weight: 700; color: #4ade80;
-      letter-spacing: .01em; line-height: 1.4; margin-top: .15rem;
-    }
 
     .steps-container {
       max-width: 700px; margin: 1.4rem auto 3rem; padding: 0 1rem;
@@ -142,6 +181,7 @@
       .steps-container { padding: 0 .75rem; }
       .step-header { padding: .95rem 1rem; font-size: .95rem; }
       .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
+      .btn-celular { font-size: .95rem; padding: .9rem 1.4rem; min-width: 120px; }
     }
   </style>
 </head>
@@ -157,6 +197,19 @@
     <span class="linha1">✅ 100% GRÁTIS</span>
     <span class="linha2">Cadastro, download e uso são totalmente gratuitos!</span>
   </div>
+
+  <!-- SELEÇÃO DE CELULAR -->
+  <section class="escolha-celular" aria-label="Escolha o modelo do seu celular">
+    <p class="pergunta">
+      1) Qual modelo do seu celular?
+      <span>Clique no botão do seu modelo para seguir o tutorial certo 👇</span>
+    </p>
+    <div class="botoes-celular">
+      <a class="btn-celular" href="pagina2">🤖 ANDROID</a>
+      <span class="ou-separador">ou</span>
+      <a class="btn-celular" href="pagina3">🍎 IPHONE</a>
+    </div>
+  </section>
 
   <main class="steps-container" id="main-content">
 
