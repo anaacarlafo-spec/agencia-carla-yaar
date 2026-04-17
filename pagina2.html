@@ -37,14 +37,9 @@
     .alert-pink { background: transparent; border-left: 4px solid #e91e8c; color: #f9a8d4; }
     .step-images { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
     .img-block { flex: 1; min-width: 130px; max-width: 220px; text-align: center; }
-    .img-block img {
-      width: 100%; height: 320px; max-width: 220px;
-      object-fit: contain; border-radius: .75rem;
-      border: 2px solid rgba(90, 40, 110, 0.6);
-      display: block; margin: 0 auto; background: #120d18;
-    }
-    .img-single { width: 100%; max-width: 280px; height: auto; object-fit: contain; border-radius: .75rem; border: 2px solid rgba(90, 40, 110, 0.6); display: block; margin: 1rem auto; }
-    .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; }
+    .img-block img { width: 100%; height: 320px; max-width: 220px; object-fit: contain; border-radius: .75rem; border: 2px solid rgba(90,40,110,0.6); display: block; margin: 0 auto; background: #120d18; }
+    .img-single { width: 100%; max-width: 260px; height: auto; object-fit: contain; border-radius: .75rem; border: 2px solid rgba(90,40,110,0.6); display: block; margin: .8rem auto 0; }
+    .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; text-align: center; }
     .cta-link { display: inline; color: #ffffff; font-size: .95rem; font-weight: 700; text-decoration: underline; text-underline-offset: .18rem; }
     .cta-link:hover { opacity: .88; }
     .id-form { display: flex; flex-direction: column; gap: .75rem; }
@@ -134,8 +129,9 @@
       <div class="step-content collapsed" id="content-3">
         <div class="step-body">
           <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo.</p>
-          <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
-          <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
+          <img src="assets/img/idcortado.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
+          <p class="img-caption">📋 O seu número de ID fica abaixo do seu nome</p>
+          <p style="margin-top:1rem;">Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
           <form class="id-form" id="id-form-step4" novalidate>
             <div class="field">
               <label for="campo-id">🔢 Seu número de ID no app</label>
