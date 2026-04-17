@@ -17,8 +17,6 @@
       line-height: 1.6;
     }
 
-    .site-header { display: none; }
-
     .banner-topo { width: 100%; display: block; line-height: 0; }
     .banner-topo img { width: 100%; height: auto; display: block; object-fit: cover; }
 
@@ -26,26 +24,25 @@
     .faixa-gratis .linha1 { display: block; font-size: 1rem; font-weight: 900; color: #4ade80; letter-spacing: .03em; line-height: 1.3; }
     .faixa-gratis .linha2 { display: block; font-size: .85rem; font-weight: 700; color: #4ade80; letter-spacing: .01em; line-height: 1.4; margin-top: .15rem; }
 
-    /* ── SELEÇÃO DE CELULAR ── */
     .escolha-celular {
       max-width: 700px;
-      margin: 2rem auto 0;
+      margin: 2.5rem auto 3rem;
       padding: 0 1rem;
       text-align: center;
     }
     .escolha-celular .pergunta {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #f0e6f6;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
       line-height: 1.5;
     }
     .escolha-celular .pergunta span {
       display: block;
-      font-size: .88rem;
+      font-size: .9rem;
       font-weight: 600;
       color: #c4a8d8;
-      margin-top: .3rem;
+      margin-top: .4rem;
     }
     .botoes-celular {
       display: flex;
@@ -69,7 +66,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: background .18s, transform .12s;
-      min-width: 140px;
+      min-width: 145px;
       letter-spacing: .02em;
     }
     .btn-celular:hover { background: #c2177a; transform: translateY(-2px); }
@@ -81,113 +78,21 @@
       flex-shrink: 0;
     }
 
-    /* ── ACCORDIONS ── */
-    .id-form { display: flex; flex-direction: column; gap: .75rem; }
-    .id-form .field { display: flex; flex-direction: column; gap: .3rem; }
-    .id-form label { font-size: .88rem; font-weight: 700; color: #e0c8f0; letter-spacing: .02em; }
-    .id-form input {
-      background: rgba(21, 13, 28, 0.7); border: 1.5px solid #4a2560; border-radius: .6rem;
-      padding: .75rem 1rem; font-size: 1rem; font-family: inherit; color: #f0e6f6;
-      outline: none; transition: border-color .18s, box-shadow .18s; width: 100%; min-height: 44px;
-    }
-    .id-form input::placeholder { color: #6a4880; }
-    .id-form input:focus { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.18); }
-    .btn-enviar {
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      background: #e91e8c; color: #fff; font-family: inherit; font-size: 1rem;
-      font-weight: 800; padding: .85rem 1.2rem; border-radius: 2rem; border: none;
-      cursor: pointer; width: 100%; min-height: 48px; margin-top: .2rem;
-      transition: background .18s, transform .12s, opacity .18s; letter-spacing: .02em;
-    }
-    .btn-enviar:hover:not(:disabled) { background: #c2177a; transform: translateY(-1px); }
-    .btn-enviar:disabled { opacity: .6; cursor: not-allowed; }
-    .btn-enviar .spinner {
-      width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,0.4);
-      border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; display: none;
-    }
-    .btn-enviar.loading .spinner { display: block; }
-    .btn-enviar.loading .btn-text { display: none; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .form-feedback {
-      border-radius: .6rem; padding: .7rem 1rem; font-size: .88rem;
-      font-weight: 700; line-height: 1.5; display: none; margin-top: .3rem;
-    }
-    .form-feedback.show { display: block; }
-    .form-feedback.success { background: #0a2015; border-left: 4px solid #22c55e; color: #bbf7d0; }
-    .form-feedback.error   { background: #2a0d12; border-left: 4px solid #ef4444; color: #fecaca; }
-
-    .steps-container {
-      max-width: 700px; margin: 1.4rem auto 3rem; padding: 0 1rem;
-      display: flex; flex-direction: column; gap: .75rem;
-    }
-    .step-card { background: transparent; border-radius: 1rem; overflow: hidden; border: 1.5px solid rgba(90, 40, 110, 0.6); }
-    .step-header {
-      display: flex; align-items: center; gap: .85rem; width: 100%;
-      background: none; border: none; padding: 1.1rem 1.2rem; cursor: pointer;
-      text-align: left; color: #f0e6f6; font-family: inherit;
-      font-size: 1rem; font-weight: 700; transition: background .18s;
-    }
-    .step-header:hover { background: rgba(233,30,140,0.08); }
-    .step-header[aria-expanded="true"] { background: rgba(233,30,140,0.1); }
-    .step-number {
-      background: #e91e8c; color: #fff; font-size: .82rem; font-weight: 800;
-      border-radius: .5rem; min-width: 2.1rem; height: 2.1rem;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .step-title { flex: 1; }
-    .step-arrow { color: #e91e8c; font-size: 1.1rem; flex-shrink: 0; transition: transform .25s cubic-bezier(.16,1,.3,1); }
-    .step-header[aria-expanded="true"] .step-arrow { transform: rotate(180deg); }
-    .step-content { display: none; }
-    .step-content.open { display: block; }
-    .step-body {
-      padding: 0 1.2rem 1.4rem; border-top: 1.5px solid rgba(90, 40, 110, 0.5);
-      padding-top: 1rem; font-size: .95rem; color: #d8c8ea; line-height: 1.75;
-    }
-    .step-body p { margin-bottom: .7rem; }
-    .step-body ul { padding-left: 1.4rem; margin-bottom: .8rem; }
-    .step-body ul li { margin-bottom: .35rem; }
-    .step-body strong { color: #f0e6f6; }
-    .alert { border-radius: .6rem; padding: .75rem 1rem; margin: .7rem 0; font-size: .92rem; line-height: 1.55; }
-    .alert-warning { background: transparent; border-left: 4px solid #f59e0b; color: #fde68a; }
-    .alert-error   { background: transparent; border-left: 4px solid #ef4444; color: #fecaca; }
-    .alert-success { background: transparent; border-left: 4px solid #22c55e; color: #bbf7d0; }
-    .alert-info    { background: transparent; border-left: 4px solid #60a5fa; color: #bfdbfe; }
-    .alert-pink    { background: transparent; border-left: 4px solid #e91e8c; color: #f9a8d4; }
-    .step-images { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
-    .img-block { flex: 1; min-width: 140px; max-width: 240px; text-align: center; }
-    .img-block img, .img-single {
-      width: 100%; border-radius: .75rem; border: 2px solid rgba(90, 40, 110, 0.6);
-      display: block; margin: 0 auto; max-width: 280px;
-    }
-    .img-single { margin: 1rem auto; }
-    .img-caption { font-size: .82rem; color: #c4a8d8; margin-top: .4rem; line-height: 1.4; }
-    .cta-links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: #25D366; color: #fff; font-family: inherit;
-      font-size: .93rem; font-weight: 700; padding: .65rem 1.2rem;
-      border-radius: 2rem; text-decoration: none; border: none; cursor: pointer;
-      transition: background .18s, transform .12s;
-    }
-    .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
     .site-footer {
       text-align: center; padding: 1.5rem 1rem 2.5rem;
-      font-size: .85rem; color: #b090c8; border-top: 1px solid rgba(90, 40, 110, 0.4);
-      background: transparent;
+      font-size: .85rem; color: #b090c8;
+      border-top: 1px solid rgba(90, 40, 110, 0.4);
     }
     .site-footer strong { color: #e0a0ff; }
     .footer-small { margin-top: .3rem; color: #8a6898; }
+
     @media (max-width: 480px) {
-      .steps-container { padding: 0 .75rem; }
-      .step-header { padding: .95rem 1rem; font-size: .95rem; }
-      .step-body { padding: 0 1rem 1.2rem; padding-top: .85rem; }
       .btn-celular { font-size: .95rem; padding: .9rem 1.4rem; min-width: 120px; }
+      .escolha-celular { margin-top: 2rem; }
     }
   </style>
 </head>
 <body>
-
-  <header class="site-header"></header>
 
   <div class="banner-topo">
     <img src="assets/img/banner-topo.jpg" alt="Carla.agenciayaar – Tutorial oficial" width="1200" height="400" loading="eager" />
@@ -198,7 +103,6 @@
     <span class="linha2">Cadastro, download e uso são totalmente gratuitos!</span>
   </div>
 
-  <!-- SELEÇÃO DE CELULAR -->
   <section class="escolha-celular" aria-label="Escolha o modelo do seu celular">
     <p class="pergunta">
       1) Qual modelo do seu celular?
@@ -211,190 +115,10 @@
     </div>
   </section>
 
-  <main class="steps-container" id="main-content">
-
-    <!-- PASSO 1 - ANDROID -->
-    <article class="step-card" id="step-1">
-      <button class="step-header" aria-expanded="false" aria-controls="content-1">
-        <span class="step-number">1</span>
-        <span class="step-title">Seu celular é Android? Faça esse passo 1</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-1">
-        <div class="step-body">
-          <p>Para baixar o app, você precisa entrar no site oficial:</p>
-          <div class="alert alert-pink">🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a></div>
-          <p>No site, clique no botão com o robozinho 🤖</p>
-          <p>Na hora de instalar, o celular vai mostrar um <strong>aviso do Google Play Protect</strong>.<br>É normal. Você precisa clicar onde eu estou explicando aqui em baixo nas fotos:</p>
-          <div class="alert alert-error">🚫 <strong>NÃO clique em "Entendi" ou "OK"</strong> — isso cancela a instalação e vai dar errado!</div>
-          <div class="step-images">
-            <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-1.jpg" alt="Aviso Google Play Protect" loading="lazy" />
-              <p class="img-caption">1️⃣ Clique em <strong>"Mais detalhes"</strong></p>
-            </div>
-            <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/aviso-2.jpg" alt="Instalar assim mesmo" loading="lazy" />
-              <p class="img-caption">2️⃣ Clique em <strong>"Instalar assim mesmo"</strong></p>
-            </div>
-          </div>
-          <div class="alert alert-success">✅ Pronto! O app vai instalar normalmente depois disso.</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PASSO 1 - IPHONE -->
-    <article class="step-card" id="step-2">
-      <button class="step-header" aria-expanded="false" aria-controls="content-2">
-        <span class="step-number">1</span>
-        <span class="step-title">Seu celular é iPhone? Faça esse passo 1</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-2">
-        <div class="step-body">
-          <p>Para baixar o app, você precisa entrar no site oficial:</p>
-          <div class="alert alert-pink">🌐 <strong>Site oficial:</strong> <a href="https://www.yaarlive.com" target="_blank" rel="noopener noreferrer" style="color:#f9a8d4;">www.yaarlive.com</a></div>
-          <p>Depois de entrar no site, escolha iPhone.<br>Depois de baixar, siga esses passos nas configurações do celular:</p>
-          <ul>
-            <li>1️⃣ Vá em <strong>Ajustes</strong> do celular</li>
-            <li>2️⃣ Clique em <strong>Geral</strong></li>
-            <li>3️⃣ Clique em <strong>Gestão de VPN e Gerenciamento de Dispositivo</strong></li>
-            <li>4️⃣ Clique no nome do app (<strong>XL…</strong>)</li>
-            <li>5️⃣ Clique em <strong>Confiar em "XL…"</strong></li>
-            <li>6️⃣ Clique em <strong>Permitir</strong></li>
-            <li>7️⃣ <strong>Reinicie o celular</strong></li>
-          </ul>
-          <div class="alert alert-success">✅ Depois de reiniciar, o app vai abrir normalmente!</div>
-          <div class="alert alert-warning">⚠️ Se tiver dificuldade, manda mensagem para a Carla que ela te ajuda.</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PASSO 2 -->
-    <article class="step-card" id="step-3">
-      <button class="step-header" aria-expanded="false" aria-controls="content-3">
-        <span class="step-number">2</span>
-        <span class="step-title">Passo 2 — Só abra aqui após BAIXAR O APP no passo 1</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-3">
-        <div class="step-body">
-          <div class="alert alert-error">📸 <strong>É obrigatório colocar pelo menos 1 foto para seu perfil ser aceito.</strong></div>
-          <p>Depois de criar sua conta no app, você precisa <strong>colocar uma foto no seu perfil</strong>.</p>
-          <div class="step-images">
-            <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/agencia-carla-tutorial/main/assets/img/sua-foto.jpg" alt="Perfil com foto" loading="lazy" />
-              <p class="img-caption">📸 <strong>Imagem 1 — Com foto:</strong> assim fica corretamente</p>
-            </div>
-            <div class="img-block">
-              <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/perfil-id.jpg" alt="Perfil com bonequinha" loading="lazy" />
-              <p class="img-caption">🙋 <strong>Com bonequinha:</strong> é normal!</p>
-            </div>
-          </div>
-          <div class="alert alert-warning">⚠️ Atenção: Mesmo depois de colocar a foto, a tela pode continuar mostrando o avatar. Isso é normal! O importante é ter colocado a foto igual aparece na imagem 1.<br><br>Se você já fez, pode seguir para o próximo passo 3!</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PASSO 3 -->
-    <article class="step-card" id="step-4">
-      <button class="step-header" aria-expanded="false" aria-controls="content-4">
-        <span class="step-number">3</span>
-        <span class="step-title">Passo 3 — Só abra após ter feito o 2</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-4">
-        <div class="step-body">
-          <p>Agora você precisa encontrar o seu <strong>número de ID</strong> no app e preencher o formulário abaixo.</p>
-          <img src="https://raw.githubusercontent.com/anaacarlafo-spec/TUTORIAL-CAPTURA/main/assets/img/idcortado.jpg" alt="Número de ID no perfil" class="img-single" loading="lazy" />
-          <p class="img-caption" style="text-align:center; margin-bottom:1rem;">📋 O número de ID fica abaixo do avatar, na tela de perfil</p>
-          <p>Preencha os campos abaixo e clique em <strong>Enviar</strong>:</p>
-          <form class="id-form" id="id-form-step4" novalidate>
-            <div class="field">
-              <label for="campo-id">🔢 Seu número de ID no app</label>
-              <input type="text" id="campo-id" name="campo-id" placeholder="Ex: 123456789" inputmode="numeric" autocomplete="off" required />
-            </div>
-            <div class="field">
-              <label for="campo-email">📧 Seu e-mail de contato</label>
-              <input type="email" id="campo-email" name="campo-email" placeholder="Ex: seuemail@gmail.com" autocomplete="email" required />
-            </div>
-            <div class="field">
-              <label for="campo-whatsapp">📱 Seu WhatsApp com DDD</label>
-              <input type="tel" id="campo-whatsapp" name="campo-whatsapp" placeholder="Ex: 32991234567" inputmode="numeric" autocomplete="tel" required />
-            </div>
-            <div class="form-feedback" id="form-feedback" role="alert"></div>
-            <button type="submit" class="btn-enviar" id="btn-enviar">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="btn-text">✉️ Enviar meus dados</span>
-            </button>
-          </form>
-          <div class="alert alert-warning" style="margin-top:1rem;">
-            ⚠️ <strong>Não pule esta etapa!</strong> Sem enviar o ID, sua conta não é ativada.
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PASSO 4 -->
-    <article class="step-card" id="step-5">
-      <button class="step-header" aria-expanded="false" aria-controls="content-5">
-        <span class="step-number">4</span>
-        <span class="step-title">Passo 4 — Já fiz todos os passos e agora?</span>
-        <span class="step-arrow" aria-hidden="true">▼</span>
-      </button>
-      <div class="step-content" id="content-5">
-        <div class="step-body">
-          <p>Depois que você enviar o número de ID, a <strong>Carla vai ativar seu perfil no sistema</strong> e te mandar o <strong>Material de Ajuda no e-mail</strong> que você preencheu. 💕</p>
-          <div class="alert alert-success">✅ Fique de olho na sua caixa de entrada! O material chegará no e-mail cadastrado.</div>
-          <p style="margin-top:.8rem;">Dúvidas? Fale com a Carla pelo WhatsApp:</p>
-          <div class="cta-links">
-            <a href="https://api.whatsapp.com/send?phone=5532991250940" target="_blank" rel="noopener noreferrer" class="cta-btn">💬 WhatsApp da Carla</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-  </main>
-
   <footer class="site-footer">
     <p>Agência <strong>Carla.agenciayaar</strong> · Material de ajuda oficial</p>
     <p class="footer-small">Dúvidas? Fale com a Carla no grupo da agência 💬</p>
   </footer>
 
-  <script>
-    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgZjuNT_Jw_Y0WItbK7TkFc8P4o1BWo0Xwwei5WXuMPZKooofO2iANCJgigcc3WlTfvw/exec';
-
-    (function() {
-      const form = document.getElementById('id-form-step4');
-      const btn  = document.getElementById('btn-enviar');
-      const feedback = document.getElementById('form-feedback');
-      const inputId       = document.getElementById('campo-id');
-      const inputEmail    = document.getElementById('campo-email');
-      const inputWhatsapp = document.getElementById('campo-whatsapp');
-      function show(type, msg) { feedback.className = 'form-feedback show ' + type; feedback.innerHTML = msg; }
-      function hide() { feedback.className = 'form-feedback'; feedback.innerHTML = ''; }
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault(); hide();
-        const id = inputId.value.trim(), email = inputEmail.value.trim(), whatsapp = inputWhatsapp.value.trim();
-        if (!id || !email || !whatsapp) { show('error', '⚠️ Por favor, preencha todos os campos antes de enviar.'); return; }
-        btn.disabled = true; btn.classList.add('loading');
-        try {
-          const res  = await fetch(SHEETS_URL + '?' + new URLSearchParams({ id, email, whatsapp }), { method: 'GET', redirect: 'follow' });
-          const json = await res.json();
-          if (json.status === 'success') { show('success', '✅ Dados enviados com sucesso! A Carla vai ativar sua conta e te mandar o material no e-mail. 💕'); form.reset(); }
-          else { show('error', '❌ Erro: ' + (json.message || 'tente novamente.')); }
-        } catch { show('error', '❌ Não foi possível conectar. Verifique sua internet e tente novamente.'); }
-        finally { btn.disabled = false; btn.classList.remove('loading'); }
-      });
-    })();
-
-    document.querySelectorAll('.step-header').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        const content  = document.getElementById(btn.getAttribute('aria-controls'));
-        btn.setAttribute('aria-expanded', String(!expanded));
-        content.classList.toggle('open', !expanded);
-      });
-    });
-  </script>
 </body>
 </html>
