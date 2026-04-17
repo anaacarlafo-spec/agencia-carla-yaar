@@ -21,6 +21,7 @@
     .faixa-gratis { background: rgb(20, 83, 45); padding: .65rem 1rem; text-align: center; }
     .faixa-gratis .linha1 { display: block; font-size: 1rem; font-weight: 900; color: #4ade80; letter-spacing: .03em; line-height: 1.3; }
     .faixa-gratis .linha2 { display: block; font-size: .85rem; font-weight: 700; color: #4ade80; letter-spacing: .01em; line-height: 1.4; margin-top: .15rem; }
+
     .escolha-celular {
       max-width: 700px;
       margin: 2.5rem auto 3rem;
@@ -31,7 +32,7 @@
       font-size: 1.2rem;
       font-weight: 800;
       color: #f0e6f6;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.8rem;
       line-height: 1.5;
     }
     .botoes-celular {
@@ -41,32 +42,37 @@
       gap: 0;
     }
     .btn-celular {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: .45rem;
+      width: 148px;
+      height: 52px;
       background: #e91e8c;
       color: #fff;
       font-family: inherit;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 800;
-      padding: 1rem 2rem;
       border-radius: 999px;
       border: none;
       cursor: pointer;
       text-decoration: none;
       transition: background .18s, transform .12s;
-      min-width: 145px;
       letter-spacing: .02em;
+      white-space: nowrap;
     }
     .btn-celular:hover { background: #c2177a; transform: translateY(-2px); }
     .ou-separador {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 52px;
       font-size: .95rem;
       font-weight: 800;
       color: #fff;
-      padding: 0 1.1rem;
       flex-shrink: 0;
     }
+
     .site-footer {
       text-align: center;
       padding: 1.5rem 1rem 2.5rem;
@@ -75,9 +81,10 @@
       border-top: 1px solid rgba(90, 40, 110, 0.4);
     }
     .site-footer strong { color: #e0a0ff; }
-    @media (max-width: 480px) {
-      .btn-celular { font-size: .95rem; padding: .9rem 1.4rem; min-width: 120px; }
-      .escolha-celular { margin-top: 2rem; }
+
+    @media (max-width: 400px) {
+      .btn-celular { width: 130px; height: 48px; font-size: .9rem; }
+      .ou-separador { width: 36px; }
     }
   </style>
 </head>
